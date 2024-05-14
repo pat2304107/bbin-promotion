@@ -13,7 +13,8 @@
     },
     "dependencies": {
         "vite": "^5.2.0",
-        "vue": "^3.4.21"
+        "vue": "^3.4.21",
+        "vue-router": "^4.3.2"
     },
     "devDependencies": {
         "@types/node": "^20.12.12",
