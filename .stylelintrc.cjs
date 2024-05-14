@@ -1,7 +1,9 @@
 module.exports = {
     extends: [
-        "stylelint-config-standard-scss",
-        "stylelint-config-recess-order"
+        "stylelint-config-standard-scss"
+    ],
+    plugins: [
+        "stylelint-order"
     ],
     overrides: [
         {
@@ -103,15 +105,9 @@ module.exports = {
         "scss/at-import-partial-extension-blacklist": null,
         "value-no-vendor-prefix": null,
         "font-family-no-missing-generic-family-keyword": null,
-        "declaration-block-semicolon-newline-after": null,
-        "indentation": [4, { "severity": "warning" } ],
-        "declaration-block-trailing-semicolon": null,
         "selector-no-qualifying-type": null,
         "selector-pseudo-class-no-unknown": [ true, { "ignorePseudoClasses": ["deep"] } ],
         "color-function-notation": "legacy",
-        "alpha-value-notation": "number",
-        "declaration-block-no-redundant-longhand-properties": null,
-        "media-feature-range-notation": 'prefix',
-        "max-empty-lines": 1
+        "alpha-value-notation": "number"
     }
-};
+}
