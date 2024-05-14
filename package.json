@@ -12,15 +12,18 @@
         "lint": "pnpm run lint:eslint && pnpm run lint:style"
     },
     "dependencies": {
+        "vite": "^5.2.0",
         "vue": "^3.4.21"
     },
     "devDependencies": {
+        "@types/node": "^20.12.12",
         "@typescript-eslint/eslint-plugin": "^6.13.1",
         "@typescript-eslint/parser": "^6.13.1",
         "@vitejs/plugin-vue": "^5.0.4",
         "@vue/eslint-config-typescript": "^12.0.0",
         "eslint": "^8.54.0",
         "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-vue": "^9.18.1",
         "postcss": "^8.4.31",
         "postcss-html": "^1.5.0",
@@ -30,7 +33,7 @@
         "stylelint-config-recess-order": "^5.0.1",
         "stylelint-config-standard-scss": "^13.1.0",
         "typescript": "^5.2.2",
-        "vite": "^5.2.0",
+        "vite-plugin-eslint": "^1.8.1",
         "vue-tsc": "^2.0.6"
     }
 }
