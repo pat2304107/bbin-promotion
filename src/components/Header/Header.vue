@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useLanguage } from '@/composables/setLocalePath';
+import Sidebar from '@/components/Sidebar/Sidebar.vue';
 
 const { setLocalePath } = useLanguage();
 </script>
@@ -19,6 +20,8 @@ const { setLocalePath } = useLanguage();
         >
             英文
         </div>
+
+        <Sidebar />
     </div>
 </template>
 

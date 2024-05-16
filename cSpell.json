@@ -5,6 +5,7 @@
         "vuejs",
         "stylelint",
         "composables",
-        "bbinpromo"
+        "bbinpromo",
+        "BBIN"
     ]
 }

@@ -4,10 +4,10 @@
 <template>
     <div class="game-wrap">
         <div class="title">
-            {{ $t(`GAME_OVERVIEW.${$route.params.game}.TITLE`) }}
+            {{ $t(`GAME.${$route.params.game}.TITLE`) }}
         </div>
         <div class="content">
-            {{ $t(`GAME_OVERVIEW.${$route.params.game}.CONTENT`) }}
+            {{ $t(`GAME.${$route.params.game}.CONTENT`) }}
         </div>
     </div>
 </template>
