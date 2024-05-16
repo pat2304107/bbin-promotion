@@ -4,6 +4,7 @@
 <template>
     <div class="home-wrap">
         Home
+        {{ $t('HOME_TITLE') }}
     </div>
 </template>
 

@@ -22,6 +22,7 @@ import Header from '@/components/Header/Header.vue';
     overflow: hidden;
     min-width: 480px;
     min-height: 100vh;
+    background-color: rgba(0,0,0,0.3);
 
     .main-container {
         position: relative;
@@ -29,6 +30,7 @@ import Header from '@/components/Header/Header.vue';
         width: 100%;
         z-index: 2;
         height: 100vh;
+        background-color: white;
 
         @media (min-width: 576px) {
             margin: 0 auto;
@@ -36,5 +38,4 @@ import Header from '@/components/Header/Header.vue';
         }
     }
 }
-
 </style>

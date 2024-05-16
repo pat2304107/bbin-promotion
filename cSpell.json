@@ -3,6 +3,8 @@
         "camelcase",
         "linebreak",
         "vuejs",
-        "stylelint"
+        "stylelint",
+        "composables",
+        "bbinpromo"
     ]
 }

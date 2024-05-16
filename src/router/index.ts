@@ -1,24 +1,58 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import Home from '@/views/Home/Home.vue';
-import Game1 from '@/views/Game1/Game1.vue';
+import Game from '@/views/Game/Game.vue';
+import { i18n, I18nLocaleKey, I18nLocaleList } from '../plugins/i18n';
+import publishConfig from '../../publish.config';
 
 const routes = [
     {
         path: '/',
-        component: Home,
+        redirect: `/${i18n.global.locale.value}`
+    },
+    {
+        path: '/:lang',
+        beforeEnter(to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) {
+            const { lang } = to.params as { lang: I18nLocaleKey };
+
+            if (!I18nLocaleList.includes(lang)) {
+                return next(i18n.global.locale.value);
+            }
+
+            if (i18n.global.locale.value !== lang) {
+                i18n.global.locale.value = lang;
+            }
+
+            return next();
+        },
         children: [
             {
-                path: 'game1',
-                name: 'Game1',
-                component: Game1
+                path: '',
+                name: 'Home',
+                component: Home
+            },
+            {
+                path: '/:lang/:game',
+                component: Game
             }
         ]
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: `/${i18n.global.locale.value}`
     }
 ];
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.VITE_BASE_URL),
+    history: createWebHistory(publishConfig.path),
     routes
+});
+
+router.beforeEach((to, _from, next) => {
+    const lang = to.params.lang as I18nLocaleKey;
+    if (I18nLocaleList.includes(lang) && i18n.global.locale.value !== lang) {
+        i18n.global.locale.value = lang;
+    }
+    next();
 });
 
 export default router;
