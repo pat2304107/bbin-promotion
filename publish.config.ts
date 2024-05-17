@@ -1,6 +1,11 @@
 export default {
-    branch: 'main',
-    domain: '.',
+    branch: 'develop',
+    domain: 'https://testdev.bbin-news.com',
     path: '/bbinpromo/',
     gtm: 'GTM-K9LCNGRL'
+
+    // branch: 'main',
+    // domain: 'https://www.bbin-news.com',
+    // path: '/bbinpromo/',
+    // gtm: 'GTM-KFRRFFX6'
 };

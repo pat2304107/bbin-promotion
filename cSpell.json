@@ -1,11 +1,12 @@
 {
     "words": [
-        "camelcase",
-        "linebreak",
-        "vuejs",
-        "stylelint",
-        "composables",
+        "axios",
+        "BBIN",
         "bbinpromo",
-        "BBIN"
+        "camelcase",
+        "composables",
+        "linebreak",
+        "stylelint",
+        "vuejs"
     ]
 }

@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useLanguage } from '@/composables/setLocalePath';
 import Sidebar from './Sidebar/Sidebar.vue';
 
 const { setLocalePath } = useLanguage();
 
-const sideBarIsShow = defineModel<boolean>();
+const sideBarIsShow = ref(false);
 
 const clickHamburgerHandler = () => {
     sideBarIsShow.value = !sideBarIsShow.value;
@@ -13,7 +14,11 @@ const clickHamburgerHandler = () => {
 
 <template>
     <div class="header-wrap">
-        Header
+        <router-link
+            :to="`/${$i18n.locale}/`"
+        >
+            Header
+        </router-link>
         <div
             @click="setLocalePath('zh-CN')"
             :style="`color:${$i18n.locale === 'zh-CN'?'red':'black'}`"

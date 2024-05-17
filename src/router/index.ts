@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import Home from '@/components/views/Home/Home.vue';
 import Game from '@/components/views/Game/Game.vue';
+import Contact from '@/components/views/Contact/Contact.vue';
 import { i18n, I18nLocaleKey, I18nLocaleList } from '../plugins/i18n';
 import publishConfig from '../../publish.config';
 
@@ -33,6 +34,10 @@ const routes = [
             {
                 path: '/:lang/:game',
                 component: Game
+            },
+            {
+                path: '/:lang/contact',
+                component: Contact
             }
         ]
     },

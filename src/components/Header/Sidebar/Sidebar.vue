@@ -39,6 +39,14 @@ const clickGameHandler = () => {
                 {{ $t('HEADER.SIDEBAR.BB_NEWS') }}
             </a>
         </div>
+        <div>
+            <router-link
+                :to="`/${$i18n.locale}/contact`"
+                @click="clickGameHandler"
+            >
+                聯絡我們
+            </router-link>
+        </div>
     </div>
 </template>
 
