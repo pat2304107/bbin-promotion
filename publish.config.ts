@@ -1,5 +1,6 @@
 export default {
     branch: 'main',
     domain: '.',
-    path: '/bbinpromo/'
+    path: '/bbinpromo/',
+    gtm: 'GTM-K9LCNGRL'
 };

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import config from '@/config';
+import useGtmSender from '@/composables/useGtmSender';
 
 const { gameList } = config;
 </script>
