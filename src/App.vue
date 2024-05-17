@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from '@/components/Header/Header.vue';
+import MainContainer from './components/MainContainer.vue';
 </script>
 
 <template>
@@ -7,10 +7,7 @@ import Header from '@/components/Header/Header.vue';
         id="app"
         class="app"
     >
-        <div class="main-container">
-            <Header />
-            <router-view />
-        </div>
+        <MainContainer />
     </div>
 </template>
 

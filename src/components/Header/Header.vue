@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { useLanguage } from '@/composables/setLocalePath';
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
+import Sidebar from './Sidebar/Sidebar.vue';
 
 const { setLocalePath } = useLanguage();
+
+const sideBarIsShow = defineModel<boolean>();
+
+const clickHamburgerHandler = () => {
+    sideBarIsShow.value = !sideBarIsShow.value;
+};
 </script>
 
 <template>
@@ -21,7 +27,9 @@ const { setLocalePath } = useLanguage();
             英文
         </div>
 
-        <Sidebar />
+        <div @click="clickHamburgerHandler">ham</div>
+
+        <Sidebar v-model="sideBarIsShow" />
     </div>
 </template>
 

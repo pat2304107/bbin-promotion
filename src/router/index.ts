@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
-import Home from '@/views/Home/Home.vue';
-import Game from '@/views/Game/Game.vue';
+import Home from '@/components/views/Home/Home.vue';
+import Game from '@/components/views/Game/Game.vue';
 import { i18n, I18nLocaleKey, I18nLocaleList } from '../plugins/i18n';
 import publishConfig from '../../publish.config';
 

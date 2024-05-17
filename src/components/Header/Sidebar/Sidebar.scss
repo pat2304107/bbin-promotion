@@ -1,0 +1,9 @@
+.sidebar-wrap{
+    position: absolute;
+    top: 100%;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    background-color: lightgray;
+    transition: height 0.2s linear;
+}

@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import config from '@/config';
-import useGtmSender from '@/composables/useGtmSender';
+
+const sideBarIsShow = defineModel<boolean>();
 
 const { gameList } = config;
+
+const clickGameHandler = () => {
+    sideBarIsShow.value = !sideBarIsShow.value;
+};
 </script>
 
 <template>
-    <div class="sidebar-wrap">
+    <div
+        class="sidebar-wrap"
+        :style="`height: ${sideBarIsShow? '100vh':'0'}`"
+    >
         <div>
             {{ $t('HEADER.SIDEBAR.GAME_TITLE') }}
         </div>
@@ -17,6 +25,7 @@ const { gameList } = config;
             >
                 <router-link
                     :to="`/${$i18n.locale}/${game.id}`"
+                    @click="clickGameHandler"
                 >
                     {{ $t(`GAME.${game.id}.NAME`) }}
                 </router-link>
