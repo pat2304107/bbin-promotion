@@ -1,0 +1,68 @@
+.home-wrap{
+        height: 100%;
+
+    .game-block{
+        position: relative;
+        height: 100%;
+
+        .game{
+            position: absolute;
+
+            &-1{
+                top: 0;
+                left: 40%;
+                width: 62.3%;
+                z-index: 5;
+            }
+
+            &-2{
+                top: 15%;
+                left: 5%;
+                width: 62.3%;
+                z-index: 4;
+            }
+
+            &-3{
+                top: 20%;
+                left: 75%;
+                width: 45.4%;
+                z-index: 3;
+            }
+
+            &-4{
+                top: 30%;
+                left: 25%;
+                width: 45.4%;
+                z-index: 2;
+            }
+
+            &-5{
+                top: 45%;
+                left: 75%;
+                width: 45.4%;
+                z-index: 1;
+            }
+        }
+    }
+
+    .enter-block{
+        position: absolute;
+        top: 60%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        .title{
+            width: 64%;
+        }
+
+        .enter {
+            width: 27%;
+            transform: translateY(20%);
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

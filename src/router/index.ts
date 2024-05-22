@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
-import Home from '@/components/views/Home/Home.vue';
+import Index from '@/components/views/Index/Index.vue';
+import GameList from '@/components/views/GameList/GameList.vue';
 import Game from '@/components/views/Game/Game.vue';
 import Contact from '@/components/views/Contact/Contact.vue';
 import { i18n, I18nLocaleKey, I18nLocaleList } from '../plugins/i18n';
@@ -28,8 +29,12 @@ const routes = [
         children: [
             {
                 path: '',
-                name: 'Home',
-                component: Home
+                name: 'Index',
+                component: Index
+            },
+            {
+                path: '/:lang/GameList',
+                component: GameList
             },
             {
                 path: '/:lang/:game',
