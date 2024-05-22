@@ -118,8 +118,6 @@ const useGtmSender = ({
 
         dataLayer.push(apiInfo);
 
-        console.log(apiInfo);
-
         step += 1;
     }
 };

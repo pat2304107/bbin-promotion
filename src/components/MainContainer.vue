@@ -10,4 +10,19 @@ import Header from '@/components/Header/Header.vue';
 </template>
 
 <style lang="scss">
+.main-container{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-image: url('@/assets/bg_m.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    z-index: 2;
+
+    @media (min-width: 576px) {
+        margin: 0 auto;
+        width: 576px;
+    }
+}
 </style>

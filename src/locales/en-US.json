@@ -1,7 +1,7 @@
 {
-    "HOME_TITLE": "TITLETITLETITLE",
-    "GAME_HELLO": "hello",
     "HEADER":{
+        "LANGUAGE_SELECTOR":"Language",
+        "SHARE":"Share",
         "SIDEBAR": {
             "GAME_TITLE": "Games",
             "BBIN_INFO": "BBIN Information",

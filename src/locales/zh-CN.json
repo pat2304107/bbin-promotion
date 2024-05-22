@@ -1,7 +1,7 @@
 {
-    "HOME_TITLE": "主標主標主標",
-    "GAME_HELLO": "你好",
     "HEADER":{
+        "LANGUAGE_SELECTOR":"語系",
+        "SHARE":"分享",
         "SIDEBAR": {
             "GAME_TITLE": "游戏",
             "BBIN_INFO": "BBIN",
