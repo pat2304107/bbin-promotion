@@ -1,4 +1,119 @@
 .game-wrap{
+    overflow: scroll;
+    padding: 30px 20px 50px;
+    color: white;
+
+    .banner{
+        width: 100%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .intro{
+        position: relative;
+        margin-top: 50px;
+
+        .intro-title{
+            display: flex;
+            align-items: center;
+
+            .title-icon{
+                width: 37.5px;
+            }
+
+            .title-text{
+                margin-left: 12.5px;
+                font-size: 32px;
+                font-weight: 900;
+                color: #ec0e14;
+            }
+        }
+
+        .left-border{
+            position: absolute;
+            top: 0;
+            left: 18.75px;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,0) 20%,
+                rgba(255,255,255,1) 50%,
+                rgba(255,255,255,0) 100%
+            );
+        }
+
+        .intro-content{
+            margin-top: 27px;
+            padding-left: 50px;
+            line-height: 24px;
+
+            .heading{
+                font-size: 20px;
+                font-weight: 900;
+            }
+
+            .content{
+                margin-top: 18px;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .feature{
+        position: relative;
+        margin-top: 50px;
+
+        .feature-title{
+            display: flex;
+            align-items: center;
+
+            .title-icon{
+                width: 37.5px;
+            }
+
+            .title-text{
+                margin-left: 12.5px;
+                font-size: 32px;
+                font-weight: 900;
+                color: #ec0e14;
+            }
+        }
+
+        .left-border{
+            position: absolute;
+            top: 0;
+            left: 18.75px;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,0) 20%,
+                rgba(255,255,255,1) 50%,
+                rgba(255,255,255,0) 100%
+            );
+        }
+
+        .feature-content{
+            margin-top: 27px;
+            padding-left: 50px;
+            line-height: 24px;
+
+            .heading{
+                font-size: 20px;
+                font-weight: 900;
+            }
+
+            .content{
+                margin-top: 18px;
+                font-size: 15px;
+            }
+        }
+    }
+
+
     .iframe-warp{
         position: fixed;
         top: 0;

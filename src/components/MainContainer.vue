@@ -12,13 +12,13 @@ import Header from '@/components/Header/Header.vue';
 <style lang="scss">
 .main-container{
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     width: 100%;
     height: 100vh;
     background-image: url('@/assets/bg_m.png');
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: auto 100%;
+    background-size: 100% 100% ;
     z-index: 2;
 
     @media (min-width: 576px) {
