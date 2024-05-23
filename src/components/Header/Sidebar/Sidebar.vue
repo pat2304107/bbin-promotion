@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import config from '@/config';
+import config, { contactConfig } from '@/config';
 
 const sideBarIsShow = defineModel<boolean>();
 
 const { gameList } = config;
 
 const clickGameHandler = () => {
-    sideBarIsShow.value = !sideBarIsShow.value;
+    sideBarIsShow.value = false;
+};
+
+const openContact = () => {
+    sideBarIsShow.value = false;
+    contactConfig.value = true;
 };
 </script>
 
@@ -49,13 +54,9 @@ const clickGameHandler = () => {
                 </div>
                 <div
                     class="contact-btn"
+                    @click="openContact"
                 >
-                    <router-link
-                        :to="`/${$i18n.locale}/contact`"
-                        @click="clickGameHandler"
-                    >
-                        {{ $t('HEADER.SIDEBAR.CONTACT') }}
-                    </router-link>
+                    {{ $t('HEADER.SIDEBAR.CONTACT') }}
                 </div>
             </div>
         </div>

@@ -46,10 +46,10 @@
             "CONTENT": "BB Casino invites players to indulge in the popular Vietnamese gaming theme with their meticulously crafted 1,024-line elimination slot, “Hoo Hey How“. With 2024 upgrade, featuring a revamped interface and stunning  game sound effects, players can enjoy a richer gaming experience. The simple and easy consecutive elimination gameplay allows for the accumulation of additional multiplier rewards. In free games, multipliers can soar up to 10 times! The perfect fusion of popular local themes and innovative gameplay not only breaks through classics but also challenges new heights, promising players an unprecedented gaming adventure!",
             "PROMOTE1":"Golden wild symbols expand scoring combinations.",
             "PROMOTE2":"Continuous elimination triggers 5x multiplier rewards."
-        },
-        "GAME_PAGE": {
-            "INTRO_TITLE": "游戏简介",
-            "FEATURE_TITLE": "游戏特色"
         }
+    },
+    "GAME_PAGE": {
+        "INTRO_TITLE": "游戏简介",
+        "FEATURE_TITLE": "游戏特色"
     }
 }

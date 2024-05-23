@@ -3,7 +3,8 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import publishConfig from '../../../../publish.config';
+import { contactConfig } from '@/config';
+import publishConfig from '../../../publish.config';
 
 const { locale } = useI18n();
 
@@ -52,44 +53,66 @@ const sendContact = async () => {
 
 <template>
     <div class="contact-wrap">
-        <div class="name">
-            <p>姓名</p>
+        <img
+            class="letter"
+            src="@/assets/contact_letter.png"
+            alt=""
+        />
+        <img
+            class="close"
+            src="@/assets/contact_close.png"
+            alt=""
+            @click="contactConfig = false"
+        />
+        <div class="title">
+            若您有合作需求，请填写下方表格<br />
+            我们将派专人尽快与您联系
+        </div>
+        <div class="input-container name">
             <input
                 type="text"
                 v-model="formData.name"
+                placeholder="姓名"
             />
         </div>
-        <div class="email">
-            <p>電子信箱</p>
+        <div class="input-container email">
             <input
                 type="email"
                 v-model="formData.email"
+                placeholder="电子邮箱"
             />
         </div>
-        <div class="telegram">
-            <p>Telegram</p>
+        <div class="input-container telegram">
             <input
                 type="text"
                 v-model="formData.im.Telegram"
+                placeholder="Telegram"
             />
         </div>
-        <div class="message">
-            <input
-                type="text"
+        <div class="input-container message">
+            <textarea
+                id="comments"
+                name="comments"
+                rows="4"
+                cols="50"
+                placeholder="请填写您的合作需求..."
                 v-model="formData.message"
             />
         </div>
 
-        <button @click="sendContact">
+        <button
+            class="send-btn"
+            @click="sendContact"
+        >
             提交
         </button>
-
-        <div>
-            {{ successMessage }}
-            {{ errorMessage }}
-        </div>
     </div>
+    <div
+        class="mask"
+        @click="contactConfig = false"
+    />
 </template>
 
 <style lang="scss" scoped>
+@import './Contact';
 </style>

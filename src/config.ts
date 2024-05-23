@@ -1,3 +1,5 @@
+import { ref } from 'vue';
+
 import indexGame1 from '@/assets/index_game_5252.png';
 import indexGame2 from '@/assets/index_game_5234.png';
 import indexGame3 from '@/assets/index_game_5275.png';
@@ -21,6 +23,8 @@ import gameBanner2En from '@/assets/game_banner_5234_en.png';
 import gameBanner3En from '@/assets/game_banner_5275_en.png';
 import gameBanner4En from '@/assets/game_banner_5200_en.png';
 import gameBanner5En from '@/assets/game_banner_5272_en.png';
+
+export const contactConfig = ref(false);
 
 export default {
     gameList: [

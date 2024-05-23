@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useLanguage } from '@/composables/setLocalePath';
 import Sidebar from './Sidebar/Sidebar.vue';
 
 const { setLocalePath } = useLanguage();
 
 const sideBarIsShow = ref(false);
+const languageIsOpen = ref(false);
 
 const clickHamburgerHandler = () => {
     sideBarIsShow.value = !sideBarIsShow.value;
+};
+const toggleLanguage = () => {
+    languageIsOpen.value = !languageIsOpen.value;
+};
+const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
+    toggleLanguage();
+    setLocalePath(lang);
 };
 </script>
 
@@ -17,6 +25,7 @@ const clickHamburgerHandler = () => {
         <router-link
             class="logo"
             :to="`/${$i18n.locale}/`"
+            @click="sideBarIsShow = false"
         >
             <img
                 src="@/assets/logo.png"
@@ -31,20 +40,36 @@ const clickHamburgerHandler = () => {
                     alt="language icon"
                     class="lang-icon"
                 />
+
                 <div
-                    class="lang"
-                    @click="setLocalePath('zh-CN')"
-                    :class="{'active': $i18n.locale === 'zh-CN'}"
+                    v-if="!languageIsOpen"
+                    @click="toggleLanguage"
+                    class="lang-title"
                 >
-                    中文
+                    {{ $t('HEADER.LANGUAGE_SELECTOR') }}
                 </div>
-                <div>|</div>
+
                 <div
-                    class="lang"
-                    @click="setLocalePath('en-US')"
-                    :class="{'active': $i18n.locale === 'en-US'}"
+                    v-if="languageIsOpen"
+                    class="lang-selection"
                 >
-                    English
+                    <div
+                        class="lang"
+                        @click="clickLanguageHandler('zh-CN')"
+                        :class="{'active': $i18n.locale === 'zh-CN'}"
+                    >
+                        中文
+                    </div>
+                    <div>
+                        |
+                    </div>
+                    <div
+                        class="lang"
+                        @click="clickLanguageHandler('en-US')"
+                        :class="{'active': $i18n.locale === 'en-US'}"
+                    >
+                        English
+                    </div>
                 </div>
             </div>
 

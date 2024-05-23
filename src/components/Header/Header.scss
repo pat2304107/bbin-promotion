@@ -12,10 +12,14 @@
     @media (width >= 576px) {
         margin: 0 auto;
         width: 576px;
+
+        .logo{
+            width: 82.5px;
+        }
     }
 
     .logo{
-        width: 82.5px;
+        width: 60px;
         height: fit-content;
 
         img{
@@ -46,17 +50,26 @@
                 height: 16.8px;
             }
 
-            div{
+            .lang-title{
                 margin-left: 8px;
             }
 
-            .lang{
-                cursor: pointer;
+            .lang-selection{
+                display: flex;
 
-                &.active{
-                    color: #f51b0f;
+                div{
+                    margin-left: 8px;
+                }
+
+                .lang{
+                    cursor: pointer;
+
+                    &.active{
+                        color: #f51b0f;
+                    }
                 }
             }
+
         }
 
         .share{
