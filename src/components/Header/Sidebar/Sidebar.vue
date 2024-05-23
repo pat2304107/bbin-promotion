@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import config, { contactConfig } from '@/config';
 
-const sideBarIsShow = defineModel<boolean>();
+const sidebarIsShow = defineModel<boolean>();
 
 const { gameList } = config;
 
 const clickGameHandler = () => {
-    sideBarIsShow.value = false;
+    sidebarIsShow.value = false;
 };
 
 const openContact = () => {
-    sideBarIsShow.value = false;
+    sidebarIsShow.value = false;
     contactConfig.value = true;
 };
 </script>
@@ -18,7 +18,7 @@ const openContact = () => {
 <template>
     <div
         class="sidebar-wrap"
-        :class="{'open':sideBarIsShow}"
+        :class="{'open':sidebarIsShow}"
     >
         <div class="sidebar-scaler">
             <div class="sidebar-block sidebar-left">

@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { useLanguage } from '@/composables/setLocalePath';
 import Sidebar from './Sidebar/Sidebar.vue';
+import Share from './Share/Share.vue';
 
 const { setLocalePath } = useLanguage();
 
-const sideBarIsShow = ref(false);
+const sidebarIsShow = ref(false);
+const shareIsShow = ref(false);
 const languageIsOpen = ref(false);
 
-const clickHamburgerHandler = () => {
-    sideBarIsShow.value = !sideBarIsShow.value;
+const toggleSidebar = () => {
+    shareIsShow.value = false;
+    sidebarIsShow.value = !sidebarIsShow.value;
 };
+
+const toggleShare = () => {
+    sidebarIsShow.value = false;
+    shareIsShow.value = !shareIsShow.value;
+};
+
 const toggleLanguage = () => {
     languageIsOpen.value = !languageIsOpen.value;
 };
@@ -25,7 +34,7 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
         <router-link
             class="logo"
             :to="`/${$i18n.locale}/`"
-            @click="sideBarIsShow = false"
+            @click="sidebarIsShow = false"
         >
             <img
                 src="@/assets/logo.png"
@@ -73,7 +82,10 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
                 </div>
             </div>
 
-            <div class="share">
+            <div
+                class="share"
+                @click="toggleShare"
+            >
                 <img
                     src="@/assets/share_icon.png"
                     alt="share icon"
@@ -86,8 +98,8 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
 
             <div
                 class="hamburger-menu"
-                @click="clickHamburgerHandler"
-                :class="{'active':sideBarIsShow}"
+                @click="toggleSidebar"
+                :class="{'active':sidebarIsShow}"
             >
                 <div class="ham ham-1" />
                 <div class="ham ham-2" />
@@ -95,7 +107,8 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
             </div>
         </div>
 
-        <Sidebar v-model="sideBarIsShow" />
+        <Sidebar v-model="sidebarIsShow" />
+        <Share v-model="shareIsShow" />
         <div class="border-bottom" />
     </div>
 </template>
