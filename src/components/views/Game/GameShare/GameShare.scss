@@ -1,0 +1,68 @@
+.game-share-wrap{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    padding: 60px 45px 54px;
+    width: calc(100% - 55px);
+    color: white ;
+    background-color: #000;
+    border: solid 1px #f51b0f;
+    z-index: 20;
+    box-shadow: 0 5px 30px -5px #ff0007;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+
+    @media (width >= 576px) {
+        width: calc(576px - 55px);
+    }
+
+    .share-scaler{
+        display: flex;
+        overflow: hidden;
+
+        .share-container{
+            display: flex;
+            align-items: center;
+            padding: 25px 0;
+            width: 100%;
+            flex-direction: column;
+
+            .qrcode{
+                width: 115px;
+            }
+
+            .url-copy-container{
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 15px;
+                padding: 4px 10px;
+                background-color: #ff000883;
+                border-radius: 17px;
+
+                .copy-icon{
+                    width: 15px;
+                }
+            }
+        }
+    }
+
+    .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 52px;
+        transform: translate(50%, -50%);
+    }
+}
+
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+}

@@ -4,10 +4,32 @@
     color: white;
 
     .banner{
+        position: relative;
         width: 100%;
 
         img{
             width: 100%;
+        }
+
+        .banner-btn-list{
+            position: absolute;
+            right: 4%;
+            bottom: 0;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            transform: translateY(20%);
+
+            .demo{
+                margin-right: 3%;
+                width: 40.6%;
+                filter: drop-shadow(0 5px 10px #ff0007);
+            }
+
+            .share{
+                width: 13%;
+                filter: drop-shadow(0 5px 10px #ff0007);
+            }
         }
     }
 
@@ -127,6 +149,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        .close{
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            width: 52px;
+            transform: translate(50%, -50%);
         }
     }
 }

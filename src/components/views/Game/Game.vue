@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import config from '@/config';
+import GameShare from './GameShare/GameShare.vue';
 
 const route = useRoute();
 
@@ -9,6 +10,7 @@ const currentGameId = computed(() => route.params.game);
 const currentGameConfig = computed(() => config.gameList.find((game) => game.id === +currentGameId.value));
 
 const isDemoShow = ref(false);
+const isGameShareShow = ref(false);
 </script>
 
 <template>
@@ -18,6 +20,20 @@ const isDemoShow = ref(false);
                 :src="$i18n.locale === 'zh-CN' ? currentGameConfig?.banner : currentGameConfig?.banner_en"
                 alt=""
             />
+            <div class="banner-btn-list">
+                <img
+                    class="demo"
+                    src="@/assets/game_demo.png"
+                    alt=""
+                    @click="isDemoShow = true"
+                />
+                <img
+                    class="share"
+                    src="@/assets/game_share.png"
+                    alt=""
+                    @click="isGameShareShow = true"
+                />
+            </div>
         </div>
 
         <div class="intro">
@@ -64,13 +80,7 @@ const isDemoShow = ref(false);
             </div>
         </div>
 
-        <!-- <button
-            @click="isDemoShow = !isDemoShow"
-        >
-            demo
-        </button> -->
-
-        <!-- <div
+        <div
             class="iframe-warp"
             v-if="isDemoShow"
             @click="isDemoShow = !isDemoShow"
@@ -81,7 +91,17 @@ const isDemoShow = ref(false);
                 height="70%"
                 frameborder="0"
             />
-        </div> -->
+            <img
+                class="close"
+                src="@/assets/contact_close.png"
+                alt=""
+            />
+        </div>
+
+        <GameShare
+            v-model="isGameShareShow"
+            v-if="isGameShareShow"
+        />
     </div>
 </template>
 

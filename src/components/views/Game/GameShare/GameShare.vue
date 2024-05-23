@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const sidebarIsShow = defineModel<boolean>();
-
 const url = 'www.bbin-news.com/bbinpromo';
+
+const isGameShareShow = defineModel<boolean>();
 
 const copy = () => {
     navigator.clipboard.writeText(url);
@@ -9,10 +9,7 @@ const copy = () => {
 </script>
 
 <template>
-    <div
-        class="share-wrap"
-        :class="{'open':sidebarIsShow}"
-    >
+    <div class="game-share-wrap">
         <div class="share-scaler">
             <div class="share-container">
                 <img
@@ -20,7 +17,6 @@ const copy = () => {
                     alt=""
                     class="qrcode"
                 />
-
                 <div class="url-copy-container">
                     {{ url }}
                     <img
@@ -32,9 +28,19 @@ const copy = () => {
                 </div>
             </div>
         </div>
+        <img
+            class="close"
+            src="@/assets/contact_close.png"
+            alt=""
+            @click="isGameShareShow = false"
+        />
     </div>
+    <div
+        class="mask"
+        @click="isGameShareShow = false"
+    />
 </template>
 
-<style scoped lang="scss">
-@import './Share';
+<style lang="scss" scoped>
+@import './GameShare';
 </style>
