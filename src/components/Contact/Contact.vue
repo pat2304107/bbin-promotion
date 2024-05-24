@@ -25,7 +25,11 @@ const errorMessage = ref();
 const sendContact = async () => {
     const config: AxiosRequestConfig = {
         method: 'post',
-        url: `${publishConfig.domain}/api/contact-us`,
+        url: `${
+            publishConfig.branch === 'main'
+                ? window.location.origin
+                : publishConfig.domain
+        }/api/contact-us`,
         data: formData.value
     };
 

@@ -55,7 +55,9 @@ const router = createRouter({
 router.beforeEach((to, _from, next) => {
     const lang = to.params.lang as I18nLocaleKey;
     if (I18nLocaleList.includes(lang) && i18n.global.locale.value !== lang) {
-        i18n.global.locale.value = lang;
+        setTimeout(() => {
+            i18n.global.locale.value = lang;
+        }, 500);
     }
     next();
 });

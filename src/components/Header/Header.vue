@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
 import { useLanguage } from '@/composables/setLocalePath';
 import Sidebar from './Sidebar/Sidebar.vue';
 import Share from './Share/Share.vue';
@@ -43,7 +44,10 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
         </router-link>
 
         <div class="header-right">
-            <div class="lang-selector">
+            <div
+                class="lang-selector"
+                :class="{'open': languageIsOpen}"
+            >
                 <img
                     src="@/assets/language_icon.png"
                     alt="language icon"
@@ -107,10 +111,10 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
             </div>
         </div>
 
-        <Sidebar v-model="sidebarIsShow" />
-        <Share v-model="shareIsShow" />
         <div class="border-bottom" />
     </div>
+    <Sidebar v-model="sidebarIsShow" />
+    <Share v-model="shareIsShow" />
 </template>
 
 <style lang="scss">

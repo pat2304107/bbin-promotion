@@ -11,6 +11,11 @@ const currentGameConfig = computed(() => config.gameList.find((game) => game.id 
 
 const isDemoShow = ref(false);
 const isGameShareShow = ref(false);
+const video = ref();
+
+const play = () => {
+    video.value[video.value.paused ? 'play' : 'pause']();
+};
 </script>
 
 <template>
@@ -55,6 +60,13 @@ const isGameShareShow = ref(false);
                 <div class="content">
                     {{ $t(`GAME.${currentGameId}.CONTENT`) }}
                 </div>
+                <video ref="video">
+                    <source
+                        src="@/assets/GIF/5200/直式介面.mp4"
+                        type="video/mp4"
+                    />
+                </video>
+                <button @click="play">play</button>
             </div>
         </div>
 
@@ -80,31 +92,55 @@ const isGameShareShow = ref(false);
             </div>
         </div>
 
-        <div
-            class="iframe-warp"
-            v-if="isDemoShow"
-            @click="isDemoShow = !isDemoShow"
+        <transition
+            name="iframe-fade"
+            mode="out-in"
         >
-            <iframe
-                :src="`https://bb-guest.com:5569/game/game.php?GameType=${currentGameId}&lang=${$i18n.locale}`"
-                width="70%"
-                height="70%"
-                frameborder="0"
-            />
-            <img
-                class="close"
-                src="@/assets/contact_close.png"
-                alt=""
-            />
-        </div>
+            <div
+                class="iframe-warp"
+                v-if="isDemoShow"
+                @click="isDemoShow = !isDemoShow"
+            >
+                <iframe
+                    :src="`https://bb-guest.com:5569/game/game.php?GameType=${currentGameId}&lang=${$i18n.locale}`"
+                    width="70%"
+                    height="70%"
+                    frameborder="0"
+                />
+                <img
+                    class="close"
+                    src="@/assets/contact_close.png"
+                    alt=""
+                />
+            </div>
+        </transition>
 
-        <GameShare
-            v-model="isGameShareShow"
-            v-if="isGameShareShow"
-        />
+        <transition
+            name="share-fade"
+            mode="out-in"
+        >
+            <GameShare
+                v-model="isGameShareShow"
+                v-if="isGameShareShow"
+            />
+        </transition>
     </div>
 </template>
 
 <style lang="scss">
 @import "./Game";
+
+.iframe-fade-enter-active,
+.iframe-fade-leave-active,
+.share-fade-enter-active,
+.share-fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.iframe-fade-enter-from,
+.iframe-fade-leave-to,
+.share-fade-enter-from,
+.share-fade-leave-to {
+    opacity: 0;
+}
 </style>

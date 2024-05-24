@@ -1,16 +1,22 @@
 .share-wrap{
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 57px;
+    left: 50%;
     display: grid;
     overflow: hidden;
     width: 100%;
     color: white;
     background-color: rgba($color: #000, $alpha: 0.7);
+    z-index: 20;
     box-shadow: 0 5px 30px -5px #ff0007;
     transition: grid-template-rows 0.2s linear;
+    transform: translateX(-50%);
     backdrop-filter: blur(5px);
     grid-template-rows: 0fr;
+
+    @media (width >= 576px) {
+        width: 576px;
+    }
 
     &.open{
         grid-template-rows: 1fr;

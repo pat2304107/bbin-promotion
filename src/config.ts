@@ -32,6 +32,11 @@ export default {
             id: 5252,
             index: indexGame1,
             thumbnail: gameThumbnail1,
+            thumbnailConfig: {
+                outerShadow: '#3cff00',
+                innerShadow: '#5aff00',
+                innerOpacity: 0.84
+            },
             banner: gameBanner1,
             banner_en: gameBanner1En
         },
@@ -39,6 +44,11 @@ export default {
             id: 5234,
             index: indexGame2,
             thumbnail: gameThumbnail2,
+            thumbnailConfig: {
+                outerShadow: '#ff00ea',
+                innerShadow: '#de00ff',
+                innerOpacity: 0.84
+            },
             banner: gameBanner2,
             banner_en: gameBanner2En
         },
@@ -46,6 +56,11 @@ export default {
             id: 5275,
             index: indexGame3,
             thumbnail: gameThumbnail3,
+            thumbnailConfig: {
+                outerShadow: '#ff8a00',
+                innerShadow: '#fcbe00',
+                innerOpacity: 0.84
+            },
             banner: gameBanner3,
             banner_en: gameBanner3En
         },
@@ -53,6 +68,11 @@ export default {
             id: 5200,
             index: indexGame4,
             thumbnail: gameThumbnail4,
+            thumbnailConfig: {
+                outerShadow: '#ff8a00',
+                innerShadow: '#fcbe00',
+                innerOpacity: 0.84
+            },
             banner: gameBanner4,
             banner_en: gameBanner4En
         },
@@ -60,6 +80,11 @@ export default {
             id: 5272,
             index: indexGame5,
             thumbnail: gameThumbnail5,
+            thumbnailConfig: {
+                outerShadow: '#ff0073',
+                innerShadow: '#ff68a8',
+                innerOpacity: 0.84
+            },
             banner: gameBanner5,
             banner_en: gameBanner5En
         }
