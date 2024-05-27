@@ -17,22 +17,24 @@ const copy = () => {
             class="game-share-container"
             @click.stop
         >
-            <div class="share-scaler">
-                <div class="share-container">
+            <div class="share-container">
+                <img
+                    src="@/assets/game_logo_5200_cn.png"
+                    alt=""
+                />
+                <img
+                    src="@/assets/qrcode.png"
+                    alt=""
+                    class="qrcode"
+                />
+                <div class="url-copy-container">
+                    {{ url }}
                     <img
-                        src="@/assets/qrcode.png"
+                        class="copy-icon"
+                        src="@/assets/copy_icon.png"
                         alt=""
-                        class="qrcode"
+                        @click="copy"
                     />
-                    <div class="url-copy-container">
-                        {{ url }}
-                        <img
-                            class="copy-icon"
-                            src="@/assets/copy_icon.png"
-                            alt=""
-                            @click="copy"
-                        />
-                    </div>
                 </div>
             </div>
             <img

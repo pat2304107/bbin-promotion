@@ -60,6 +60,12 @@ const openContact = () => {
                 </div>
             </div>
         </div>
+
+        <div
+            v-show="sidebarIsShow"
+            class="mask"
+            @click="()=>sidebarIsShow = false"
+        />
     </div>
 </template>
 

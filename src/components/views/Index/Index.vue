@@ -10,9 +10,22 @@ const enterBlock = ref<HTMLElement>();
 
 onMounted(() => {
     if (!gameIcon.value || !enterBlock.value) return;
-    gameIcon.value.forEach((game, index) => {
-        gsap.fromTo(game, { opacity: 0, y: 100 }, { opacity: 1, y: 0, delay: 0.5 + 0.2 * index });
-    });
+    gsap.timeline()
+        .addLabel('start')
+        .fromTo(gameIcon.value, { opacity: 0, y: 100 }, { opacity: 1, y: 0, stagger: 0.2 }, 'start+=0.5')
+        .add(() => {
+            if (!gameIcon.value) return;
+            gameIcon.value.forEach((icon, index) => {
+                gsap.to(icon, {
+                    y: 10,
+                    duration: 1,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power1.inOut',
+                    delay: (index + 1) * 0.2
+                });
+            });
+        }, 'start+=0.7');
 });
 </script>
 
@@ -45,7 +58,7 @@ onMounted(() => {
                 class="enter"
             >
                 <img
-                    :src="$i18n.locale === 'zh-CN' ? enterCh : enterEn"
+                    :src="$i18n.locale === 'cn' ? enterCh : enterEn"
                     alt="enter"
                 />
             </router-link>

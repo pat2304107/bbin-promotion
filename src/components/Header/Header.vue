@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { gsap } from 'gsap';
+import { ref } from 'vue';
 import { useLanguage } from '@/composables/setLocalePath';
 import Sidebar from './Sidebar/Sidebar.vue';
 import Share from './Share/Share.vue';
@@ -24,7 +23,7 @@ const toggleShare = () => {
 const toggleLanguage = () => {
     languageIsOpen.value = !languageIsOpen.value;
 };
-const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
+const clickLanguageHandler = (lang: 'cn' | 'en') => {
     toggleLanguage();
     setLocalePath(lang);
 };
@@ -68,8 +67,8 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
                 >
                     <div
                         class="lang"
-                        @click="clickLanguageHandler('zh-CN')"
-                        :class="{'active': $i18n.locale === 'zh-CN'}"
+                        @click="clickLanguageHandler('cn')"
+                        :class="{'active': $i18n.locale === 'cn'}"
                     >
                         中文
                     </div>
@@ -78,8 +77,8 @@ const clickLanguageHandler = (lang: 'zh-CN' | 'en-US') => {
                     </div>
                     <div
                         class="lang"
-                        @click="clickLanguageHandler('en-US')"
-                        :class="{'active': $i18n.locale === 'en-US'}"
+                        @click="clickLanguageHandler('en')"
+                        :class="{'active': $i18n.locale === 'en'}"
                     >
                         English
                     </div>

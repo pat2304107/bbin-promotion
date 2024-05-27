@@ -8,7 +8,7 @@ export function useLanguage() {
     const currentLang = ref<I18nLocaleKey>(i18n.global.locale.value as I18nLocaleKey);
 
     const setLocalePath = (lang: I18nLocaleKey) => {
-        const currentPath = route.fullPath.replace(/^\/(en-US|zh-CN)/, '');
+        const currentPath = route.fullPath.replace(/^\/(en|cn)/, '');
         const newPath = `/${lang}${currentPath}`;
         currentLang.value = lang;
         router.push(newPath);

@@ -1,0 +1,54 @@
+{
+    "HEADER":{
+        "LANGUAGE_SELECTOR":"Language",
+        "SHARE":"Share",
+        "SIDEBAR": {
+            "GAME_TITLE": "Games",
+            "BBIN_INFO": "BBIN Information",
+            "CONTACT": "Contact Us",
+            "BB_NEWS": "BB NEWS",
+            "BB_CASINO": "BB Casino"
+        }
+    },
+    "GAME":{
+        "5252":{
+            "NAME": "Leprechaun",
+            "TITLE": "Leprechaun adventures await as the Leprechauns unlock endless luck for you!",
+            "CONTENT": "Explore the fantastical world of Leprechauns by stepping into BB casino signature slot game, “Leprechaun“! <span class='highlight'>Simply score consecutive matches to trigger special eliminations</span>, immersing players in a continuous stream of surprises. Mystical elements like lucky clovers and leprechauns accompany you throughout, with every spin potentially marking the beginning of a lucky journey. Enjoy the thrill of accumulating multiplier rewards, where each win brings a doubling of bonuses. <span class='highlight'>With the appearance of clover-framed symbols, there's even a chance to transform into a wild symbol after elimination, offering more rewards and surprises<span/>. Let's embark on this leprechaun adventure together, dancing with the leprechauns as our lucky voyage begins!",
+            "PROMOTE1":"Lucky multipliers with the Leprechauns symbols, with continuous bonus enhancements",
+            "PROMOTE2":"Colossal Symbols increase the chances of winning combinations"
+        },
+        "5234":{
+            "NAME": "Awesome Buffalo",
+            "TITLE": "Explore the fantastical legend of the BB Wild West, where unprecedented gold rush adventures unfold!",
+            "CONTENT": "BB Casino presents the “Wild West Legends” slot game, blending wilderness charm with Western lore. With a full-screen floating line mechanism, <span class='highlight'>it offers up to 46,656 ways to win</span>, akin to discovering endless treasures in the wilderness! <span class='highlight'>Featuring distinctive gold/silver frame gameplay reminiscent of the golden and silver realms of Western towns, each consecutive elimination transforms into a wild symbol, bringing greater surprises to players</span>. In free games, there's even a chance to earn additional reward multipliers, making your adventure journey more colorful and exciting. Every spin is a miracle, every line is a surprise, always anticipating the thrill of winning lines!",
+            "PROMOTE1":"The gold and silver frame gameplay significantly enhances the chances of winning lines.",
+            "PROMOTE2":"Free game rounds are endlessly stackable, with reward multipliers increasing further."
+        },
+        "5275":{
+            "NAME": "Mahjong Ways",
+            "TITLE": "Endless fun in the BB mahjong trend, dominate the market‘s hotspots！",
+            "CONTENT": "Joining the wave of Asian electronic mahjong games, ‘Mahjong Madness’ continuing the classic, creating anew! Letting players immerse themselves in <span class='highlight'>the best-selling trend of Asian electronic mahjong games</span>. The game not only incorporates classic mahjong elements but also introduces the golden mahjong wild card mechanism, allowing players to experience the perfect combination of tradition and innovation. Moreover, through consecutive eliminations, <span class='highlight'>scores can multiply continuously, offering an unprecedented thrill of winning big</span>. This is not just a game, but also a feast of mahjong trends that inherits and innovates, embarking on an extraordinary journey of mahjong together!",
+            "PROMOTE1":"Golden mahjong items extend consecutive matches, challenging a 5x reward.",
+            "PROMOTE2":"In free games, consecutive match multipliers can reach up to 10x"
+        },
+        "5200":{
+            "NAME": "Hoo Hey How",
+            "TITLE": "Immerse yourself in the BB Vietnamese vibe and experience！",
+            "CONTENT": "BB Casino introduces <span class='highlight'>the 2,000-line slot</span> 'Lucky Dog' .The game innovates with wild symbols, consecutive matching multipliers, and incremental rewards. Not only does it feature golden symbols that can turn objects into wilds, but it also includes <span class='highlight'>multiplier rewards that increase with consecutive wins</span>. In free games, multipliers double again, significantly increasing the chances of winning big! Let 'Lucky Dog' bring you good luck and lead you on the path to wealth!",
+            "PROMOTE1":"Consecutive elimination gameplay with rewards up to 10 times.",
+            "PROMOTE2":"Vertical layout for improved mobile experience."
+        },
+        "5272":{
+            "NAME": "Lucky Dog",
+            "TITLE": "Win good fortune, follow the footsteps of the BB Lucky Dog.",
+            "CONTENT": "BB Casino invites players to indulge in the popular Vietnamese gaming theme with their meticulously crafted <span class='highlight'>1,024-line elimination slot</span>, “Hoo Hey How“. With 2024 upgrade, featuring a revamped interface and stunning  game sound effects, players can enjoy a richer gaming experience. <span class='highlight'>The simple and easy consecutive elimination gameplay allows for the accumulation of additional multiplier rewards</span>. In free games, <span class='highlight'>multipliers can soar up to 10 times</span>! The perfect fusion of popular local themes and innovative gameplay not only breaks through classics but also challenges new heights, promising players an unprecedented gaming adventure!",
+            "PROMOTE1":"Golden wild symbols expand scoring combinations.",
+            "PROMOTE2":"Continuous elimination triggers 5x multiplier rewards."
+        }
+    },
+    "GAME_PAGE": {
+        "INTRO_TITLE": "游戏简介",
+        "FEATURE_TITLE": "游戏特色"
+    }
+}

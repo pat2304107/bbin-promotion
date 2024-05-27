@@ -1,7 +1,7 @@
 export default {
     branch: 'develop',
     domain: 'https://testdev.bbin-news.com',
-    path: '/bbinpromo/',
+    path: '/product_event/bbinpromo/',
     gtm: 'GTM-K9LCNGRL'
 
     // branch: 'main',

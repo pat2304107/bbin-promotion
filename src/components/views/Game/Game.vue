@@ -7,14 +7,16 @@ import GameShare from './GameShare/GameShare.vue';
 const route = useRoute();
 
 const currentGameId = computed(() => route.params.game);
-const currentGameConfig = computed(() => config.gameList.find((game) => game.id === +currentGameId.value));
+const currentGameConfig = ref(config.gameList.find((game) => game.id === +currentGameId.value));
 
+const videoDom = ref();
 const isDemoShow = ref(false);
 const isGameShareShow = ref(false);
-const video = ref();
+const isVideoPlaying = ref(false);
 
 const play = () => {
-    video.value[video.value.paused ? 'play' : 'pause']();
+    videoDom.value[videoDom.value.paused ? 'play' : 'pause']();
+    isVideoPlaying.value = !isVideoPlaying.value;
 };
 </script>
 
@@ -22,7 +24,7 @@ const play = () => {
     <div class="game-wrap">
         <div class="banner">
             <img
-                :src="$i18n.locale === 'zh-CN' ? currentGameConfig?.banner : currentGameConfig?.banner_en"
+                :src="$i18n.locale === 'cn' ? currentGameConfig?.banner : currentGameConfig?.banner_en"
                 alt=""
             />
             <div class="banner-btn-list">
@@ -48,25 +50,38 @@ const play = () => {
                     src="@/assets/game_intro_icon.png"
                     alt=""
                 />
-                <p class="title-text">
-                    {{ $t('GAME_PAGE.INTRO_TITLE') }}
-                </p>
+                <p
+                    class="title-text"
+                    v-html="$t('GAME_PAGE.INTRO_TITLE')"
+                />
             </div>
             <div class="left-border" />
             <div class="intro-content">
-                <div class="heading">
-                    {{ $t(`GAME.${currentGameId}.TITLE`) }}
+                <div
+                    class="heading"
+                    v-html="$t(`GAME.${currentGameId}.TITLE`)"
+                />
+                <div
+                    class="content"
+                    v-html="$t(`GAME.${currentGameId}.CONTENT`)"
+                />
+                <div class="video-container">
+                    <video ref="videoDom">
+                        <source
+                            :src="$i18n.locale === 'cn' ? currentGameConfig?.video_cn : currentGameConfig?.video_en"
+                            type="video/mp4"
+                        />
+                    </video>
+                    <div
+                        class="mask"
+                        @click="play"
+                    >
+                        <div
+                            class="play-btn"
+                            v-if="!isVideoPlaying"
+                        />
+                    </div>
                 </div>
-                <div class="content">
-                    {{ $t(`GAME.${currentGameId}.CONTENT`) }}
-                </div>
-                <video ref="video">
-                    <source
-                        src="@/assets/GIF/5200/直式介面.mp4"
-                        type="video/mp4"
-                    />
-                </video>
-                <button @click="play">play</button>
             </div>
         </div>
 
@@ -83,12 +98,20 @@ const play = () => {
             </div>
             <div class="left-border" />
             <div class="feature-content">
-                <div class="promote">
+                <div class="promote promote-1">
                     {{ $t(`GAME.${currentGameId}.PROMOTE1`) }}
                 </div>
-                <div class="promote">
+                <img
+                    :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_1 : currentGameConfig?.gif_en_1"
+                    alt=""
+                />
+                <div class="promote promote-2">
                     {{ $t(`GAME.${currentGameId}.PROMOTE2`) }}
                 </div>
+                <img
+                    :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_2 : currentGameConfig?.gif_en_2"
+                    alt=""
+                />
             </div>
         </div>
 
@@ -103,8 +126,6 @@ const play = () => {
             >
                 <iframe
                     :src="`https://bb-guest.com:5569/game/game.php?GameType=${currentGameId}&lang=${$i18n.locale}`"
-                    width="70%"
-                    height="70%"
                     frameborder="0"
                 />
                 <img

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const sidebarIsShow = defineModel<boolean>();
+const shareIsShow = defineModel<boolean>();
 
 const url = 'www.bbin-news.com/bbinpromo';
 
@@ -11,7 +11,7 @@ const copy = () => {
 <template>
     <div
         class="share-wrap"
-        :class="{'open':sidebarIsShow}"
+        :class="{'open':shareIsShow}"
     >
         <div class="share-scaler">
             <div class="share-container">
@@ -32,6 +32,11 @@ const copy = () => {
                 </div>
             </div>
         </div>
+        <div
+            v-show="shareIsShow"
+            class="mask"
+            @click="()=>shareIsShow = false"
+        />
     </div>
 </template>
 

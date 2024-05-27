@@ -1,19 +1,20 @@
 import { createI18n } from 'vue-i18n';
 
-import zhCN from '../locales/zh-CN.json';
-import enUS from '../locales/en-US.json';
+import zhCN from '../locales/cn.json';
+import enUS from '../locales/en.json';
 
-export type I18nLocaleKey = 'en-US' | 'zh-CN';
+export type I18nLocaleKey = 'en' | 'cn';
 
-export const I18nLocaleList = ['en-US', 'zh-CN'];
+export const I18nLocaleList = ['en', 'cn'];
 
 export const i18n = createI18n({
     legacy: false,
-    locale: 'zh-CN',
-    fallbackLocale: 'zh-CN',
+    warnHtmlMessage: false,
+    locale: 'cn',
+    fallbackLocale: 'cn',
     messages: {
-        'en-US': enUS,
-        'zh-CN': zhCN
+        en: enUS,
+        cn: zhCN
     }
 });
 

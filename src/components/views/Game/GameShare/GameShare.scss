@@ -13,7 +13,7 @@
         display: flex;
         align-items: center;
         padding: 60px 45px 54px;
-        width: calc(100% - 55px);
+        width: 80%;
         color: white ;
         background-color: #000;
         border: solid 1px #f51b0f;
@@ -23,36 +23,32 @@
         flex-direction: column;
 
         @media (width >= 576px) {
-            width: calc(576px - 55px);
+            width: calc(576px * 0.8);
         }
 
-        .share-scaler{
+        .share-container{
             display: flex;
-            overflow: hidden;
+            align-items: center;
+            padding: 25px 0;
+            width: 100%;
+            flex-direction: column;
 
-            .share-container{
+            .qrcode{
+                width: 115px;
+            }
+
+            .url-copy-container{
                 display: flex;
                 align-items: center;
-                padding: 25px 0;
-                width: 100%;
-                flex-direction: column;
+                margin-top: 15px;
+                padding: 4px 10px;
+                white-space: nowrap;
+                background-color: #ff000883;
+                border-radius: 17px;
+                gap: 8px;
 
-                .qrcode{
-                    width: 115px;
-                }
-
-                .url-copy-container{
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    margin-top: 15px;
-                    padding: 4px 10px;
-                    background-color: #ff000883;
-                    border-radius: 17px;
-
-                    .copy-icon{
-                        width: 15px;
-                    }
+                .copy-icon{
+                    width: 15px;
                 }
             }
         }

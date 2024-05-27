@@ -12,19 +12,20 @@
     @media (width >= 576px) {
         margin: 0 auto;
         width: 576px;
-
-        .logo{
-            width: 82.5px;
-        }
     }
 
     .logo{
         width: 60px;
         height: fit-content;
 
+        @media (width >= 576px) {
+            width: 82.5px;
+        }
+
         img{
             width: 100%;
         }
+
     }
 
     .border-bottom {
