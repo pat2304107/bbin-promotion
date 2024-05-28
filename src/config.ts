@@ -99,11 +99,6 @@ export default {
             index: indexGame1,
             thumbnail_cn: gameThumbnail1Cn,
             thumbnail_en: gameThumbnail1En,
-            thumbnailConfig: {
-                outerShadow: '#3cff00',
-                innerShadow: '#5aff00',
-                innerOpacity: 0.84
-            },
             banner: gameBanner1,
             banner_en: gameBanner1En,
             video_en: gameVideoCn1,
@@ -122,11 +117,6 @@ export default {
             index: indexGame2,
             thumbnail_cn: gameThumbnail2Cn,
             thumbnail_en: gameThumbnail2En,
-            thumbnailConfig: {
-                outerShadow: '#ff00ea',
-                innerShadow: '#de00ff',
-                innerOpacity: 0.84
-            },
             banner: gameBanner2,
             banner_en: gameBanner2En,
             video_en: gameVideoCn2,
@@ -145,11 +135,6 @@ export default {
             index: indexGame3,
             thumbnail_cn: gameThumbnail3Cn,
             thumbnail_en: gameThumbnail3En,
-            thumbnailConfig: {
-                outerShadow: '#ff8a00',
-                innerShadow: '#fcbe00',
-                innerOpacity: 0.84
-            },
             banner: gameBanner3,
             banner_en: gameBanner3En,
             video_en: gameVideoCn3,
@@ -168,11 +153,6 @@ export default {
             index: indexGame4,
             thumbnail_cn: gameThumbnail4Cn,
             thumbnail_en: gameThumbnail4En,
-            thumbnailConfig: {
-                outerShadow: '#ff8a00',
-                innerShadow: '#fcbe00',
-                innerOpacity: 0.84
-            },
             banner: gameBanner4,
             banner_en: gameBanner4En,
             video_en: gameVideoCn4,
@@ -191,11 +171,6 @@ export default {
             index: indexGame5,
             thumbnail_cn: gameThumbnail5Cn,
             thumbnail_en: gameThumbnail5En,
-            thumbnailConfig: {
-                outerShadow: '#ff0073',
-                innerShadow: '#ff68a8',
-                innerOpacity: 0.84
-            },
             banner: gameBanner5,
             banner_en: gameBanner5En,
             video_en: gameVideoCn5,

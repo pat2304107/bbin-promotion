@@ -10,6 +10,7 @@ import config from '@/config';
                 v-for="game in config.gameList"
                 :key="game.id"
                 class="game-item"
+                :class="`click-${game.id}`"
                 :to="`/${$i18n.locale}/${game.id}`"
             >
                 <img

@@ -2,6 +2,8 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import config from '@/config';
+import gameDemoCn from '@/assets/Game/game_demo_cn.png';
+import gameDemoEn from '@/assets/Game/game_demo_en.png';
 import GameShare from './GameShare/GameShare.vue';
 
 const route = useRoute();
@@ -30,7 +32,7 @@ const play = () => {
             <div class="banner-btn-list">
                 <img
                     class="demo"
-                    src="@/assets/Game/game_demo.png"
+                    :src="$i18n.locale === 'cn' ? gameDemoCn : gameDemoEn"
                     alt=""
                     @click="isDemoShow = true"
                 />

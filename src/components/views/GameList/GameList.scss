@@ -24,6 +24,38 @@
             flex: 0 0 48%;
             margin-bottom: 10px;
 
+            &.click{
+                &-5252{
+                    &:active{
+                        filter: drop-shadow(0 0 20px #3cff00);
+                    }
+                }
+
+                &-5234{
+                    &:active{
+                        filter: drop-shadow(0 0 20px #ff00ea);
+                    }
+                }
+
+                &-5275{
+                    &:active{
+                        filter: drop-shadow(0 0 20px #ff8a00);
+                    }
+                }
+
+                &-5200{
+                    &:active{
+                        filter: drop-shadow(0 0 20px #ff8a00);
+                    }
+                }
+
+                &-5272{
+                    &:active{
+                        filter: drop-shadow(0 0 20px #ff0073);
+                    }
+                }
+            }
+
             img{
                 width: 100%;
             }

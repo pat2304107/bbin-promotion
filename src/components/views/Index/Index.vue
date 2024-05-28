@@ -12,12 +12,13 @@ onMounted(() => {
     if (!gameIcon.value || !enterBlock.value) return;
     gsap.timeline()
         .addLabel('start')
-        .fromTo(gameIcon.value, { opacity: 0, y: 100 }, { opacity: 1, y: 0, stagger: 0.2 }, 'start+=0.5')
+        .fromTo(gameIcon.value, { opacity: 0, y: 100, x: -40 }, { opacity: 1, y: 0, x: 0, stagger: 0.2 }, 'start+=0.5')
         .add(() => {
             if (!gameIcon.value) return;
             gameIcon.value.forEach((icon, index) => {
                 gsap.to(icon, {
                     y: 10,
+                    x: -4,
                     duration: 1,
                     repeat: -1,
                     yoyo: true,

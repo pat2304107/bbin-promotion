@@ -64,6 +64,10 @@
         .enter {
             width: 23%;
 
+            &:active{
+                transform: scale(0.9);
+            }
+
             img{
                 width: 100%;
                 filter: drop-shadow(0 6px 6px #ff0007);
