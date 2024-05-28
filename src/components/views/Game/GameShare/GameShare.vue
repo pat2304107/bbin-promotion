@@ -1,7 +1,17 @@
 <script setup lang="ts">
-const url = 'www.bbin-news.com/bbinpromo';
+import { useI18n } from 'vue-i18n';
 
+const i18n = useI18n();
+const props = defineProps({
+    currentGameConfig: {
+        type: Object,
+        default: undefined
+    }
+});
 const isGameShareShow = defineModel<boolean>();
+const { currentGameConfig } = props;
+
+const url = i18n.t(`GAME.${currentGameConfig?.id}.URL`);
 
 const copy = () => {
     navigator.clipboard.writeText(url);
@@ -19,11 +29,12 @@ const copy = () => {
         >
             <div class="share-container">
                 <img
-                    src="@/assets/game_logo_5200_cn.png"
+                    class="logo"
+                    :src="$i18n.locale === 'cn' ? currentGameConfig?.logo_cn : currentGameConfig?.logo_en"
                     alt=""
                 />
                 <img
-                    src="@/assets/qrcode.png"
+                    :src="$i18n.locale === 'cn' ? currentGameConfig?.qrcode_cn : currentGameConfig?.qrcode_en"
                     alt=""
                     class="qrcode"
                 />

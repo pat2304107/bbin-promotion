@@ -30,13 +30,13 @@ const play = () => {
             <div class="banner-btn-list">
                 <img
                     class="demo"
-                    src="@/assets/game_demo.png"
+                    src="@/assets/Game/game_demo.png"
                     alt=""
                     @click="isDemoShow = true"
                 />
                 <img
                     class="share"
-                    src="@/assets/game_share.png"
+                    src="@/assets/Game/game_share.png"
                     alt=""
                     @click="isGameShareShow = true"
                 />
@@ -47,7 +47,7 @@ const play = () => {
             <div class="intro-title">
                 <img
                     class="title-icon"
-                    src="@/assets/game_intro_icon.png"
+                    src="@/assets/Game/game_intro_icon.png"
                     alt=""
                 />
                 <p
@@ -79,7 +79,12 @@ const play = () => {
                         <div
                             class="play-btn"
                             v-if="!isVideoPlaying"
-                        />
+                        >
+                            <img
+                                src="@/assets/play_btn.png"
+                                alt=""
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,7 +94,7 @@ const play = () => {
             <div class="feature-title">
                 <img
                     class="title-icon"
-                    src="@/assets/game_feature_icon.png"
+                    src="@/assets/Game/game_feature_icon.png"
                     alt=""
                 />
                 <p class="title-text">
@@ -141,6 +146,7 @@ const play = () => {
             mode="out-in"
         >
             <GameShare
+                :currentGameConfig="currentGameConfig"
                 v-model="isGameShareShow"
                 v-if="isGameShareShow"
             />

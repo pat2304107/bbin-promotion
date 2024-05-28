@@ -1,64 +1,94 @@
 import { ref } from 'vue';
 
-import indexGame1 from '@/assets/index_game_5252.png';
-import indexGame2 from '@/assets/index_game_5234.png';
-import indexGame3 from '@/assets/index_game_5275.png';
-import indexGame4 from '@/assets/index_game_5200.png';
-import indexGame5 from '@/assets/index_game_5272.png';
+import indexGame1 from '@/assets/Index/index_game_5252.png';
+import indexGame2 from '@/assets/Index/index_game_5234.png';
+import indexGame3 from '@/assets/Index/index_game_5275.png';
+import indexGame4 from '@/assets/Index/index_game_5200.png';
+import indexGame5 from '@/assets/Index/index_game_5272.png';
 
-import gameThumbnail1 from '@/assets/game_list_5252.png';
-import gameThumbnail2 from '@/assets/game_list_5234.png';
-import gameThumbnail3 from '@/assets/game_list_5275.png';
-import gameThumbnail4 from '@/assets/game_list_5200.png';
-import gameThumbnail5 from '@/assets/game_list_5272.png';
+import gameThumbnail1Cn from '@/assets/Game/Thumbnail/game_list_5252_cn.png';
+import gameThumbnail2Cn from '@/assets/Game/Thumbnail/game_list_5234_cn.png';
+import gameThumbnail3Cn from '@/assets/Game/Thumbnail/game_list_5275_cn.png';
+import gameThumbnail4Cn from '@/assets/Game/Thumbnail/game_list_5200_cn.png';
+import gameThumbnail5Cn from '@/assets/Game/Thumbnail/game_list_5272_cn.png';
 
-import gameBanner1 from '@/assets/game_banner_5252.png';
-import gameBanner2 from '@/assets/game_banner_5234.png';
-import gameBanner3 from '@/assets/game_banner_5275.png';
-import gameBanner4 from '@/assets/game_banner_5200.png';
-import gameBanner5 from '@/assets/game_banner_5272.png';
+import gameThumbnail1En from '@/assets/Game/Thumbnail/game_list_5252_en.png';
+import gameThumbnail2En from '@/assets/Game/Thumbnail/game_list_5234_en.png';
+import gameThumbnail3En from '@/assets/Game/Thumbnail/game_list_5275_en.png';
+import gameThumbnail4En from '@/assets/Game/Thumbnail/game_list_5200_en.png';
+import gameThumbnail5En from '@/assets/Game/Thumbnail/game_list_5272_en.png';
 
-import gameBanner1En from '@/assets/game_banner_5252_en.png';
-import gameBanner2En from '@/assets/game_banner_5234_en.png';
-import gameBanner3En from '@/assets/game_banner_5275_en.png';
-import gameBanner4En from '@/assets/game_banner_5200_en.png';
-import gameBanner5En from '@/assets/game_banner_5272_en.png';
+import gameBanner1 from '@/assets/Game/Banner/game_banner_5252.png';
+import gameBanner2 from '@/assets/Game/Banner/game_banner_5234.png';
+import gameBanner3 from '@/assets/Game/Banner/game_banner_5275.png';
+import gameBanner4 from '@/assets/Game/Banner/game_banner_5200.png';
+import gameBanner5 from '@/assets/Game/Banner/game_banner_5272.png';
 
-import gameVideoCn1 from '@/assets/video/5252_cn.mp4';
-import gameVideoCn2 from '@/assets/video/5234_cn.mp4';
-import gameVideoCn3 from '@/assets/video/5275_cn.mp4';
-import gameVideoCn4 from '@/assets/video/5200_cn.mp4';
-import gameVideoCn5 from '@/assets/video/5272_cn.mp4';
+import gameBanner1En from '@/assets/Game/Banner/game_banner_5252_en.png';
+import gameBanner2En from '@/assets/Game/Banner/game_banner_5234_en.png';
+import gameBanner3En from '@/assets/Game/Banner/game_banner_5275_en.png';
+import gameBanner4En from '@/assets/Game/Banner/game_banner_5200_en.png';
+import gameBanner5En from '@/assets/Game/Banner/game_banner_5272_en.png';
 
-import gameVideoEn1 from '@/assets/video/5252_en.mp4';
-import gameVideoEn2 from '@/assets/video/5234_en.mp4';
-import gameVideoEn3 from '@/assets/video/5275_en.mp4';
-import gameVideoEn4 from '@/assets/video/5200_en.mp4';
-import gameVideoEn5 from '@/assets/video/5272_en.mp4';
+import gameVideoCn1 from '@/assets/Game/video/5252_cn.mp4';
+import gameVideoCn2 from '@/assets/Game/video/5234_cn.mp4';
+import gameVideoCn3 from '@/assets/Game/video/5275_cn.mp4';
+import gameVideoCn4 from '@/assets/Game/video/5200_cn.mp4';
+import gameVideoCn5 from '@/assets/Game/video/5272_cn.mp4';
 
-import gameGIFCn1_1 from '@/assets/GIF/5252_cn_1.gif';
-import gameGIFCn2_1 from '@/assets/GIF/5234_cn_1.gif';
-import gameGIFCn3_1 from '@/assets/GIF/5275_cn_1.gif';
-import gameGIFCn4_1 from '@/assets/GIF/5200_cn_1.gif';
-import gameGIFCn5_1 from '@/assets/GIF/5272_cn_1.gif';
+import gameVideoEn1 from '@/assets/Game/video/5252_en.mp4';
+import gameVideoEn2 from '@/assets/Game/video/5234_en.mp4';
+import gameVideoEn3 from '@/assets/Game/video/5275_en.mp4';
+import gameVideoEn4 from '@/assets/Game/video/5200_en.mp4';
+import gameVideoEn5 from '@/assets/Game/video/5272_en.mp4';
 
-import gameGIFEn1_1 from '@/assets/GIF/5252_en_1.gif';
-import gameGIFEn2_1 from '@/assets/GIF/5234_en_1.gif';
-import gameGIFEn3_1 from '@/assets/GIF/5275_en_1.gif';
-import gameGIFEn4_1 from '@/assets/GIF/5200_en_1.gif';
-import gameGIFEn5_1 from '@/assets/GIF/5272_en_1.gif';
+import gameGIFCn1_1 from '@/assets/Game/GIF/5252_cn_1.gif';
+import gameGIFCn2_1 from '@/assets/Game/GIF/5234_cn_1.gif';
+import gameGIFCn3_1 from '@/assets/Game/GIF/5275_cn_1.gif';
+import gameGIFCn4_1 from '@/assets/Game/GIF/5200_cn_1.gif';
+import gameGIFCn5_1 from '@/assets/Game/GIF/5272_cn_1.gif';
 
-import gameGIFCn1_2 from '@/assets/GIF/5252_cn_2.gif';
-import gameGIFCn2_2 from '@/assets/GIF/5234_cn_2.gif';
-import gameGIFCn3_2 from '@/assets/GIF/5275_cn_2.gif';
-import gameGIFCn4_2 from '@/assets/GIF/5200_cn_2.gif';
-import gameGIFCn5_2 from '@/assets/GIF/5272_cn_2.gif';
+import gameGIFEn1_1 from '@/assets/Game/GIF/5252_en_1.gif';
+import gameGIFEn2_1 from '@/assets/Game/GIF/5234_en_1.gif';
+import gameGIFEn3_1 from '@/assets/Game/GIF/5275_en_1.gif';
+import gameGIFEn4_1 from '@/assets/Game/GIF/5200_en_1.gif';
+import gameGIFEn5_1 from '@/assets/Game/GIF/5272_en_1.gif';
 
-import gameGIFEn1_2 from '@/assets/GIF/5252_en_2.gif';
-import gameGIFEn2_2 from '@/assets/GIF/5234_en_2.gif';
-import gameGIFEn3_2 from '@/assets/GIF/5275_en_2.gif';
-import gameGIFEn4_2 from '@/assets/GIF/5200_en_2.gif';
-import gameGIFEn5_2 from '@/assets/GIF/5272_en_2.gif';
+import gameGIFCn1_2 from '@/assets/Game/GIF/5252_cn_2.gif';
+import gameGIFCn2_2 from '@/assets/Game/GIF/5234_cn_2.gif';
+import gameGIFCn3_2 from '@/assets/Game/GIF/5275_cn_2.gif';
+import gameGIFCn4_2 from '@/assets/Game/GIF/5200_cn_2.gif';
+import gameGIFCn5_2 from '@/assets/Game/GIF/5272_cn_2.gif';
+
+import gameGIFEn1_2 from '@/assets/Game/GIF/5252_en_2.gif';
+import gameGIFEn2_2 from '@/assets/Game/GIF/5234_en_2.gif';
+import gameGIFEn3_2 from '@/assets/Game/GIF/5275_en_2.gif';
+import gameGIFEn4_2 from '@/assets/Game/GIF/5200_en_2.gif';
+import gameGIFEn5_2 from '@/assets/Game/GIF/5272_en_2.gif';
+
+import gameLogoCn1 from '@/assets/Game/Logo/game_logo_5252_cn.png';
+import gameLogoCn2 from '@/assets/Game/Logo/game_logo_5234_cn.png';
+import gameLogoCn3 from '@/assets/Game/Logo/game_logo_5275_cn.png';
+import gameLogoCn4 from '@/assets/Game/Logo/game_logo_5200_cn.png';
+import gameLogoCn5 from '@/assets/Game/Logo/game_logo_5272_cn.png';
+
+import gameLogoEn1 from '@/assets/Game/Logo/game_logo_5252_en.png';
+import gameLogoEn2 from '@/assets/Game/Logo/game_logo_5234_en.png';
+import gameLogoEn3 from '@/assets/Game/Logo/game_logo_5275_en.png';
+import gameLogoEn4 from '@/assets/Game/Logo/game_logo_5200_en.png';
+import gameLogoEn5 from '@/assets/Game/Logo/game_logo_5272_en.png';
+
+import gameQrCodeCn1 from '@/assets/Game/QrCode/game_qrcode_5252_cn.png';
+import gameQrCodeCn2 from '@/assets/Game/QrCode/game_qrcode_5234_cn.png';
+import gameQrCodeCn3 from '@/assets/Game/QrCode/game_qrcode_5275_cn.png';
+import gameQrCodeCn4 from '@/assets/Game/QrCode/game_qrcode_5200_cn.png';
+import gameQrCodeCn5 from '@/assets/Game/QrCode/game_qrcode_5272_cn.png';
+
+import gameQrCodeEn1 from '@/assets/Game/QrCode/game_qrcode_5252_en.png';
+import gameQrCodeEn2 from '@/assets/Game/QrCode/game_qrcode_5234_en.png';
+import gameQrCodeEn3 from '@/assets/Game/QrCode/game_qrcode_5275_en.png';
+import gameQrCodeEn4 from '@/assets/Game/QrCode/game_qrcode_5200_en.png';
+import gameQrCodeEn5 from '@/assets/Game/QrCode/game_qrcode_5272_en.png';
 
 export const contactConfig = ref(false);
 
@@ -67,7 +97,8 @@ export default {
         {
             id: 5252,
             index: indexGame1,
-            thumbnail: gameThumbnail1,
+            thumbnail_cn: gameThumbnail1Cn,
+            thumbnail_en: gameThumbnail1En,
             thumbnailConfig: {
                 outerShadow: '#3cff00',
                 innerShadow: '#5aff00',
@@ -80,12 +111,17 @@ export default {
             gif_cn_1: gameGIFCn1_1,
             gif_cn_2: gameGIFCn1_2,
             gif_en_1: gameGIFEn1_1,
-            gif_en_2: gameGIFEn1_2
+            gif_en_2: gameGIFEn1_2,
+            logo_cn: gameLogoCn1,
+            logo_en: gameLogoEn1,
+            qrcode_cn: gameQrCodeCn1,
+            qrcode_en: gameQrCodeEn1
         },
         {
             id: 5234,
             index: indexGame2,
-            thumbnail: gameThumbnail2,
+            thumbnail_cn: gameThumbnail2Cn,
+            thumbnail_en: gameThumbnail2En,
             thumbnailConfig: {
                 outerShadow: '#ff00ea',
                 innerShadow: '#de00ff',
@@ -98,12 +134,17 @@ export default {
             gif_cn_1: gameGIFCn2_1,
             gif_cn_2: gameGIFCn2_2,
             gif_en_1: gameGIFEn2_1,
-            gif_en_2: gameGIFEn2_2
+            gif_en_2: gameGIFEn2_2,
+            logo_cn: gameLogoCn2,
+            logo_en: gameLogoEn2,
+            qrcode_cn: gameQrCodeCn2,
+            qrcode_en: gameQrCodeEn2
         },
         {
             id: 5275,
             index: indexGame3,
-            thumbnail: gameThumbnail3,
+            thumbnail_cn: gameThumbnail3Cn,
+            thumbnail_en: gameThumbnail3En,
             thumbnailConfig: {
                 outerShadow: '#ff8a00',
                 innerShadow: '#fcbe00',
@@ -116,12 +157,17 @@ export default {
             gif_cn_1: gameGIFCn3_1,
             gif_cn_2: gameGIFCn3_2,
             gif_en_1: gameGIFEn3_1,
-            gif_en_2: gameGIFEn3_2
+            gif_en_2: gameGIFEn3_2,
+            logo_cn: gameLogoCn3,
+            logo_en: gameLogoEn3,
+            qrcode_cn: gameQrCodeCn3,
+            qrcode_en: gameQrCodeEn3
         },
         {
             id: 5200,
             index: indexGame4,
-            thumbnail: gameThumbnail4,
+            thumbnail_cn: gameThumbnail4Cn,
+            thumbnail_en: gameThumbnail4En,
             thumbnailConfig: {
                 outerShadow: '#ff8a00',
                 innerShadow: '#fcbe00',
@@ -134,12 +180,17 @@ export default {
             gif_cn_1: gameGIFCn4_1,
             gif_cn_2: gameGIFCn4_2,
             gif_en_1: gameGIFEn4_1,
-            gif_en_2: gameGIFEn4_2
+            gif_en_2: gameGIFEn4_2,
+            logo_cn: gameLogoCn4,
+            logo_en: gameLogoEn4,
+            qrcode_cn: gameQrCodeCn4,
+            qrcode_en: gameQrCodeEn4
         },
         {
             id: 5272,
             index: indexGame5,
-            thumbnail: gameThumbnail5,
+            thumbnail_cn: gameThumbnail5Cn,
+            thumbnail_en: gameThumbnail5En,
             thumbnailConfig: {
                 outerShadow: '#ff0073',
                 innerShadow: '#ff68a8',
@@ -152,7 +203,11 @@ export default {
             gif_cn_1: gameGIFCn5_1,
             gif_cn_2: gameGIFCn5_2,
             gif_en_1: gameGIFEn5_1,
-            gif_en_2: gameGIFEn5_2
+            gif_en_2: gameGIFEn5_2,
+            logo_cn: gameLogoCn5,
+            logo_en: gameLogoEn5,
+            qrcode_cn: gameQrCodeCn5,
+            qrcode_en: gameQrCodeEn5
         }
     ]
 };

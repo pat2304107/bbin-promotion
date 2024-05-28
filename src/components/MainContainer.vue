@@ -26,16 +26,20 @@ import { contactConfig } from '../config';
 <style lang="scss">
 .main-container{
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
     height: 100vh;
-    background-image: url('@/assets/bg_m.png');
-    background-repeat: no-repeat;
     background-position: center top;
+    background-repeat: no-repeat;
     background-size: 100% 100% ;
     z-index: 2;
+    background-image: url('@/assets/bg_m.png');
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
 
-    @media (min-width: 576px) {
+    @media (width >= 576px) {
         margin: 0 auto;
         width: 576px;
         background-size: 100%;

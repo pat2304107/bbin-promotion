@@ -31,6 +31,7 @@
         right: 0;
         width: 52px;
         transform: translate(50%, -50%);
+        cursor: pointer;
     }
 
     .title{
@@ -54,12 +55,29 @@
         input,
         textarea{
             width: 100%;
+            font-family: "\5FAE\8EDF\6B63\9ED1\9AD4", "Microsoft JhengHei", "微软雅黑", arial, helvetica, sans-serif !important;
             background-color: transparent;
             border: none;
+            resize: none;
 
             &:focus{
                 outline: unset;
             }
+        }
+    }
+
+    .warning{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 8px;
+        width: 100%;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        color: #ec0e14;
+        opacity: 0;
+
+        &.show{
+            opacity: 1;
         }
     }
 
@@ -73,6 +91,7 @@
         border-radius: 25px;
         transform: translateY(50%);
         box-shadow: 0 5px 30px -5px #ff0007;
+        cursor: pointer;
     }
 }
 
@@ -82,5 +101,6 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 15;
 }

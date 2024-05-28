@@ -8,6 +8,7 @@
         "linebreak",
         "stylelint",
         "vuejs",
-        "gsap"
+        "gsap",
+        "qrcode"
     ]
 }

@@ -12,7 +12,7 @@
         left: 50%;
         display: flex;
         align-items: center;
-        padding: 60px 45px 54px;
+        padding: 40px 45px 54px;
         width: 80%;
         color: white ;
         background-color: #000;
@@ -29,12 +29,16 @@
         .share-container{
             display: flex;
             align-items: center;
-            padding: 25px 0;
             width: 100%;
             flex-direction: column;
 
+            .logo{
+                width: 70%;
+            }
+
             .qrcode{
-                width: 115px;
+                margin-top: 15px;
+                width: 40%;
             }
 
             .url-copy-container{
@@ -49,6 +53,7 @@
 
                 .copy-icon{
                     width: 15px;
+                    cursor: pointer;
                 }
             }
         }
@@ -59,6 +64,7 @@
             right: 0;
             width: 52px;
             transform: translate(50%, -50%);
+            cursor: pointer;
         }
     }
 }

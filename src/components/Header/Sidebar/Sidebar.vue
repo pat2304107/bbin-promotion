@@ -43,12 +43,18 @@ const openContact = () => {
                     {{ $t('HEADER.SIDEBAR.BBIN_INFO') }}
                 </div>
                 <div class="bbin-link">
-                    <a href="https://www.bbin-news.com/?utm_source=promo">
+                    <a
+                        href="https://www.bbin-news.com/?utm_source=promo"
+                        target="_blank"
+                    >
                         {{ $t('HEADER.SIDEBAR.BB_NEWS') }}
                     </a>
                 </div>
                 <div class="bbin-link">
-                    <a href="https://bbin-casino.com/?utm_source=promo">
+                    <a
+                        href="https://bbin-casino.com/?utm_source=promo"
+                        target="_blank"
+                    >
                         {{ $t('HEADER.SIDEBAR.BB_CASINO') }}
                     </a>
                 </div>

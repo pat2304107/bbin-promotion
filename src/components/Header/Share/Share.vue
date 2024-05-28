@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+import QrCodeCn from '@/assets/Index/index_qrcode_cn.png';
+import QrCodeEn from '@/assets/Index/index_qrcode_en.png';
+
+const i18n = useI18n();
 const shareIsShow = defineModel<boolean>();
 
-const url = 'www.bbin-news.com/bbinpromo';
+const url = i18n.t('INDEX.URL');
 
 const copy = () => {
     navigator.clipboard.writeText(url);
@@ -16,7 +21,7 @@ const copy = () => {
         <div class="share-scaler">
             <div class="share-container">
                 <img
-                    src="@/assets/qrcode.png"
+                    :src="$i18n.locale === 'cn' ? QrCodeCn : QrCodeEn"
                     alt=""
                     class="qrcode"
                 />

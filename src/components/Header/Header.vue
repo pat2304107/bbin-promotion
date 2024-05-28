@@ -27,6 +27,11 @@ const clickLanguageHandler = (lang: 'cn' | 'en') => {
     toggleLanguage();
     setLocalePath(lang);
 };
+
+const clickLogoHandler = () => {
+    sidebarIsShow.value = false;
+    shareIsShow.value = false;
+};
 </script>
 
 <template>
@@ -34,7 +39,7 @@ const clickLanguageHandler = (lang: 'cn' | 'en') => {
         <router-link
             class="logo"
             :to="`/${$i18n.locale}/`"
-            @click="sidebarIsShow = false"
+            @click="clickLogoHandler"
         >
             <img
                 src="@/assets/logo.png"

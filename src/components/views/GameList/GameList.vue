@@ -4,7 +4,7 @@ import config from '@/config';
 
 <template>
     <div class="game-list-wrap">
-        <p class="title">GAME MENU</p>
+        <p class="title">{{ $t('GAME_LIST.TITLE') }}</p>
         <div class="game-container">
             <router-link
                 v-for="game in config.gameList"
@@ -13,7 +13,7 @@ import config from '@/config';
                 :to="`/${$i18n.locale}/${game.id}`"
             >
                 <img
-                    :src="game.thumbnail"
+                    :src="$i18n.locale === 'cn' ? game.thumbnail_cn : game.thumbnail_en"
                     alt=""
                 />
             </router-link>

@@ -22,7 +22,45 @@ const formData = ref({
 const successMessage = ref();
 const errorMessage = ref();
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isNamePass = ref(true);
+const isEmailValid = ref(true);
+const isEmailPass = ref(true);
+const isMessagePass = ref(true);
+const isTelegramPass = ref(true);
+const isSendContentPass = ref(false);
+
+const checkSendContent = () => {
+    if (formData.value.name && formData.value.email && emailPattern.test(formData.value.email) && formData.value.message && formData.value.im.Telegram) {
+        isSendContentPass.value = true;
+    } else {
+        isSendContentPass.value = false;
+    }
+};
+
+const checkName = () => {
+    isNamePass.value = !!formData.value.name;
+    checkSendContent();
+};
+const checkEmail = () => {
+    isEmailValid.value = !formData.value.email || emailPattern.test(formData.value.email);
+    isEmailPass.value = !!formData.value.email;
+
+    checkSendContent();
+};
+const checkMessage = () => {
+    isMessagePass.value = !!formData.value.message;
+    checkSendContent();
+};
+const checkTelegram = () => {
+    isTelegramPass.value = !!formData.value.im.Telegram;
+    checkSendContent();
+};
+
 const sendContact = async () => {
+    if (!isSendContentPass.value) {
+        return;
+    }
     const config: AxiosRequestConfig = {
         method: 'post',
         url: `${
@@ -35,7 +73,6 @@ const sendContact = async () => {
 
     try {
         const response: AxiosResponse = await axios(config);
-        console.log(response.data);
         successMessage.value = response.data;
     } catch (error) {
         console.error('Request error:', error);
@@ -68,30 +105,54 @@ const sendContact = async () => {
             alt=""
             @click="contactConfig = false"
         />
-        <div class="title">
-            若您有合作需求，请填写下方表格<br />
-            我们将派专人尽快与您联系
-        </div>
+        <div
+            class="title"
+            v-html="$t('HEADER.SIDEBAR.CONTACT_FORM.TITLE')"
+        />
         <div class="input-container name">
             <input
                 type="text"
                 v-model="formData.name"
-                placeholder="姓名"
+                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.NAME')"
+                @focus="isNamePass=true"
+                @blur="checkName"
             />
+        </div>
+        <div
+            class="warning"
+            :class="{'show':!isNamePass}"
+        >
+            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
         </div>
         <div class="input-container email">
             <input
                 type="email"
                 v-model="formData.email"
-                placeholder="电子邮箱"
+                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL')"
+                @focus="isEmailPass=true"
+                @blur="checkEmail"
             />
+        </div>
+        <div
+            class="warning"
+            :class="{'show':!isEmailPass || !isEmailValid}"
+        >
+            {{ !isEmailPass ? $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') : $t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL_WARNING') }}
         </div>
         <div class="input-container telegram">
             <input
                 type="text"
                 v-model="formData.im.Telegram"
-                placeholder="Telegram"
+                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.TELEGRAM')"
+                @focus="isTelegramPass=true"
+                @blur="checkTelegram"
             />
+        </div>
+        <div
+            class="warning"
+            :class="{'show':!isTelegramPass}"
+        >
+            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
         </div>
         <div class="input-container message">
             <textarea
@@ -99,16 +160,24 @@ const sendContact = async () => {
                 name="comments"
                 rows="4"
                 cols="50"
-                placeholder="请填写您的合作需求..."
+                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.MESSAGE')"
                 v-model="formData.message"
+                @focus="isMessagePass=true"
+                @blur="checkMessage"
             />
+        </div>
+        <div
+            class="warning"
+            :class="{'show':!isMessagePass}"
+        >
+            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
         </div>
 
         <button
             class="send-btn"
             @click="sendContact"
         >
-            提交
+            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.SEND') }}
         </button>
     </div>
     <div

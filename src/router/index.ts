@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import { createRouter, createWebHashHistory, NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import Index from '@/components/views/Index/Index.vue';
 import GameList from '@/components/views/GameList/GameList.vue';
 import Game from '@/components/views/Game/Game.vue';
@@ -8,7 +8,7 @@ import publishConfig from '../../publish.config';
 const routes = [
     {
         path: '/',
-        redirect: `/${i18n.global.locale.value}`
+        redirect: `/${i18n.global.locale.value}/`
     },
     {
         path: '/:lang',
@@ -16,7 +16,7 @@ const routes = [
             const { lang } = to.params as { lang: I18nLocaleKey };
 
             if (!I18nLocaleList.includes(lang)) {
-                return next(i18n.global.locale.value);
+                return next({ path: `/${i18n.global.locale.value}/` });
             }
 
             if (i18n.global.locale.value !== lang) {
@@ -32,23 +32,23 @@ const routes = [
                 component: Index
             },
             {
-                path: '/:lang/GameList',
+                path: 'GameList',
                 component: GameList
             },
             {
-                path: '/:lang/:game',
+                path: ':game',
                 component: Game
             }
         ]
     },
     {
         path: '/:pathMatch(.*)*',
-        redirect: `/${i18n.global.locale.value}`
+        redirect: `/${i18n.global.locale.value}/`
     }
 ];
 
 const router = createRouter({
-    history: createWebHistory(publishConfig.path),
+    history: createWebHashHistory(publishConfig.path),
     routes
 });
 
