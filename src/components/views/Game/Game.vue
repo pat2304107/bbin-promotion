@@ -27,19 +27,19 @@ const play = () => {
         <div class="banner">
             <img
                 :src="$i18n.locale === 'cn' ? currentGameConfig?.banner : currentGameConfig?.banner_en"
-                alt=""
+                alt="game banner"
             />
             <div class="banner-btn-list">
                 <img
                     class="demo"
                     :src="$i18n.locale === 'cn' ? gameDemoCn : gameDemoEn"
-                    alt=""
+                    alt="demo button"
                     @click="isDemoShow = true"
                 />
                 <img
                     class="share"
                     src="@/assets/Game/game_share.png"
-                    alt=""
+                    alt="share button"
                     @click="isGameShareShow = true"
                 />
             </div>
@@ -50,7 +50,7 @@ const play = () => {
                 <img
                     class="title-icon"
                     src="@/assets/Game/game_intro_icon.png"
-                    alt=""
+                    alt="title icon"
                 />
                 <p
                     class="title-text"
@@ -68,7 +68,10 @@ const play = () => {
                     v-html="$t(`GAME.${currentGameId}.CONTENT`)"
                 />
                 <div class="video-container">
-                    <video ref="videoDom">
+                    <video
+                        ref="videoDom"
+                        :poster="$i18n.locale === 'cn' ? currentGameConfig?.thumbnail_cn : currentGameConfig?.thumbnail_en"
+                    >
                         <source
                             :src="$i18n.locale === 'cn' ? currentGameConfig?.video_cn : currentGameConfig?.video_en"
                             type="video/mp4"
@@ -84,7 +87,7 @@ const play = () => {
                         >
                             <img
                                 src="@/assets/play_btn.png"
-                                alt=""
+                                alt="play button"
                             />
                         </div>
                     </div>
@@ -97,7 +100,7 @@ const play = () => {
                 <img
                     class="title-icon"
                     src="@/assets/Game/game_feature_icon.png"
-                    alt=""
+                    alt="title icon"
                 />
                 <p class="title-text">
                     {{ $t('GAME_PAGE.FEATURE_TITLE') }}
@@ -110,14 +113,14 @@ const play = () => {
                 </div>
                 <img
                     :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_1 : currentGameConfig?.gif_en_1"
-                    alt=""
+                    alt="promote gif 1"
                 />
                 <div class="promote promote-2">
                     {{ $t(`GAME.${currentGameId}.PROMOTE2`) }}
                 </div>
                 <img
                     :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_2 : currentGameConfig?.gif_en_2"
-                    alt=""
+                    alt="promote gif 2"
                 />
             </div>
         </div>
@@ -138,7 +141,7 @@ const play = () => {
                 <img
                     class="close"
                     src="@/assets/contact_close.png"
-                    alt=""
+                    alt="close"
                 />
             </div>
         </transition>

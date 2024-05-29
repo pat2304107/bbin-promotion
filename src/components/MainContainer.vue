@@ -6,6 +6,7 @@ import { contactConfig } from '../config';
 
 <template>
     <div class="main-container">
+        <div class="halo" />
         <Header />
         <router-view v-slot="{ Component, route }">
             <transition
@@ -19,7 +20,9 @@ import { contactConfig } from '../config';
             </transition>
         </router-view>
 
-        <Contact v-if="contactConfig" />
+        <Contact
+            v-if="contactConfig"
+        />
     </div>
 </template>
 
@@ -28,7 +31,7 @@ import { contactConfig } from '../config';
     position: relative;
     overflow-y: scroll;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100% 100% ;
@@ -38,11 +41,37 @@ import { contactConfig } from '../config';
         display: none;
     }
     -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
 
     @media (width >= 576px) {
         margin: 0 auto;
         width: 576px;
-        background-size: 100%;
+    }
+
+    .halo{
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 60vh;
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: 100% 100% ;
+        background-image: url('@/assets/bg_m_halo.png');
+        opacity: 0.5;
+        animation: breathing 2.5s infinite alternate ease-in-out;
+
+        @media (width >= 576px) {
+            width: 576px;
+            background-size: 100%;
+        }
+
+        @keyframes breathing {
+            100% {
+                opacity: 1;
+            }
+        }
     }
 
     .fade-enter-active,

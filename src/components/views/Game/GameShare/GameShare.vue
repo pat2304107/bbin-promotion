@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import copyIcon from '@/assets/copy_icon.png';
+import successIcon from '@/assets/copy_success.png';
 
 const i18n = useI18n();
 const props = defineProps({
@@ -13,8 +16,16 @@ const { currentGameConfig } = props;
 
 const url = i18n.t(`GAME.${currentGameConfig?.id}.URL`);
 
+const successState = ref(false);
+const successTimer = ref();
+
 const copy = () => {
     navigator.clipboard.writeText(url);
+    successState.value = true;
+    clearTimeout(successTimer.value);
+    successTimer.value = setTimeout(() => {
+        successState.value = false;
+    }, 1000);
 };
 </script>
 
@@ -31,19 +42,19 @@ const copy = () => {
                 <img
                     class="logo"
                     :src="$i18n.locale === 'cn' ? currentGameConfig?.logo_cn : currentGameConfig?.logo_en"
-                    alt=""
+                    alt="logo"
                 />
                 <img
                     :src="$i18n.locale === 'cn' ? currentGameConfig?.qrcode_cn : currentGameConfig?.qrcode_en"
-                    alt=""
+                    alt="qrcode"
                     class="qrcode"
                 />
                 <div class="url-copy-container">
                     {{ url }}
                     <img
                         class="copy-icon"
-                        src="@/assets/copy_icon.png"
-                        alt=""
+                        :src="successState ? successIcon : copyIcon"
+                        alt="copy icon"
                         @click="copy"
                     />
                 </div>
@@ -51,7 +62,7 @@ const copy = () => {
             <img
                 class="close"
                 src="@/assets/contact_close.png"
-                alt=""
+                alt="close"
                 @click="isGameShareShow = false"
             />
         </div>

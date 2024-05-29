@@ -9,6 +9,7 @@
         "stylelint",
         "vuejs",
         "gsap",
-        "qrcode"
+        "qrcode",
+        "yoyo"
     ]
 }

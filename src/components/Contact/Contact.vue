@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { gsap } from 'gsap';
 import { useI18n } from 'vue-i18n';
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -18,6 +19,9 @@ const formData = ref({
     },
     locale: locale.value
 });
+
+const form = ref<HTMLElement>();
+const letter = ref<HTMLElement>();
 
 const successMessage = ref();
 const errorMessage = ref();
@@ -74,21 +78,43 @@ const sendContact = async () => {
     try {
         const response: AxiosResponse = await axios(config);
         successMessage.value = response.data;
+
+        formData.value = {
+            name: '',
+            email: '',
+            message: '',
+            newsletter: false,
+            im: {
+                Telegram: ''
+            },
+            locale: locale.value
+        };
+        isSendContentPass.value = false;
+
+        if (!form.value || !letter.value) return;
+        if (!form.value || !letter.value) return;
+        gsap.timeline()
+            .addLabel('start')
+            .to(form.value, { opacity: 0 }, 'start+=0')
+            .to(letter.value, { y: 250, duration: 0.5 }, 'start+=0')
+            .to(letter.value, {
+                rotation: 20,
+                duration: 0.1,
+                repeat: 5,
+                yoyo: true,
+                ease: 'power1.inOut'
+            })
+            .to(letter.value, {
+                y: 0,
+                duration: 0.4
+            }, 'start+=1.2')
+            .call(() => {
+                contactConfig.value = false;
+            }, [], 'start+=1.8');
     } catch (error) {
         console.error('Request error:', error);
         errorMessage.value = `Request error: ${error}`;
     }
-
-    formData.value = {
-        name: '',
-        email: '',
-        message: '',
-        newsletter: false,
-        im: {
-            Telegram: ''
-        },
-        locale: locale.value
-    };
 };
 </script>
 
@@ -96,86 +122,93 @@ const sendContact = async () => {
     <div class="contact-wrap">
         <img
             class="letter"
+            ref="letter"
             src="@/assets/contact_letter.png"
-            alt=""
+            alt="letter"
         />
         <img
             class="close"
             src="@/assets/contact_close.png"
-            alt=""
+            alt="close"
             @click="contactConfig = false"
         />
         <div
-            class="title"
-            v-html="$t('HEADER.SIDEBAR.CONTACT_FORM.TITLE')"
-        />
-        <div class="input-container name">
-            <input
-                type="text"
-                v-model="formData.name"
-                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.NAME')"
-                @focus="isNamePass=true"
-                @blur="checkName"
-            />
-        </div>
-        <div
-            class="warning"
-            :class="{'show':!isNamePass}"
+            class="form"
+            ref="form"
         >
-            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
-        </div>
-        <div class="input-container email">
-            <input
-                type="email"
-                v-model="formData.email"
-                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL')"
-                @focus="isEmailPass=true"
-                @blur="checkEmail"
+            <div
+                class="title"
+                v-html="$t('HEADER.SIDEBAR.CONTACT_FORM.TITLE')"
             />
-        </div>
-        <div
-            class="warning"
-            :class="{'show':!isEmailPass || !isEmailValid}"
-        >
-            {{ !isEmailPass ? $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') : $t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL_WARNING') }}
-        </div>
-        <div class="input-container telegram">
-            <input
-                type="text"
-                v-model="formData.im.Telegram"
-                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.TELEGRAM')"
-                @focus="isTelegramPass=true"
-                @blur="checkTelegram"
-            />
-        </div>
-        <div
-            class="warning"
-            :class="{'show':!isTelegramPass}"
-        >
-            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
-        </div>
-        <div class="input-container message">
-            <textarea
-                id="comments"
-                name="comments"
-                rows="4"
-                cols="50"
-                :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.MESSAGE')"
-                v-model="formData.message"
-                @focus="isMessagePass=true"
-                @blur="checkMessage"
-            />
-        </div>
-        <div
-            class="warning"
-            :class="{'show':!isMessagePass}"
-        >
-            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
+            <div class="input-container name">
+                <input
+                    type="text"
+                    v-model="formData.name"
+                    :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.NAME')"
+                    @focus="isNamePass=true"
+                    @blur="checkName"
+                />
+            </div>
+            <div
+                class="warning"
+                :class="{'show':!isNamePass}"
+            >
+                {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
+            </div>
+            <div class="input-container email">
+                <input
+                    type="email"
+                    v-model="formData.email"
+                    :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL')"
+                    @focus="isEmailPass=true"
+                    @blur="checkEmail"
+                />
+            </div>
+            <div
+                class="warning"
+                :class="{'show':!isEmailPass || !isEmailValid}"
+            >
+                {{ !isEmailPass ? $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') : $t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL_WARNING') }}
+            </div>
+            <div class="input-container telegram">
+                <input
+                    type="text"
+                    v-model="formData.im.Telegram"
+                    :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.TELEGRAM')"
+                    @focus="isTelegramPass=true"
+                    @blur="checkTelegram"
+                />
+            </div>
+            <div
+                class="warning"
+                :class="{'show':!isTelegramPass}"
+            >
+                {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
+            </div>
+            <div class="input-container message">
+                <textarea
+                    id="comments"
+                    name="comments"
+                    rows="4"
+                    cols="50"
+                    :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.MESSAGE')"
+                    v-model="formData.message"
+                    @focus="isMessagePass=true"
+                    @blur="checkMessage"
+                />
+            </div>
+            <div
+                class="warning"
+                :class="{'show':!isMessagePass}"
+            >
+                {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
+            </div>
         </div>
 
         <button
             class="send-btn"
             @click="sendContact"
+            :class="{ 'pass' : isSendContentPass}"
         >
             {{ $t('HEADER.SIDEBAR.CONTACT_FORM.SEND') }}
         </button>

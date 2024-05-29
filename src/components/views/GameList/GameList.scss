@@ -1,5 +1,7 @@
 .game-list-wrap{
+    position: relative;
     padding: 66px 20px 0;
+    z-index: 5;
 
     .title{
         margin-top: 46px;

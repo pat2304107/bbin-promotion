@@ -1,5 +1,16 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
 import config from '@/config';
+
+const iconAnimation = ref<HTMLElement[]>();
+
+onMounted(() => {
+    if (!iconAnimation.value) return;
+    gsap.timeline()
+        .addLabel('start')
+        .fromTo(iconAnimation.value, { opacity: 0, y: 100 }, { opacity: 1, y: 0, stagger: 0.1 }, 'start+=0.5');
+});
 </script>
 
 <template>
@@ -14,8 +25,9 @@ import config from '@/config';
                 :to="`/${$i18n.locale}/${game.id}`"
             >
                 <img
-                    :src="$i18n.locale === 'cn' ? game.thumbnail_cn : game.thumbnail_en"
-                    alt=""
+                    :src="$i18n.locale === 'cn' ? game.entry_cn : game.entry_en"
+                    alt="entry image"
+                    ref="iconAnimation"
                 />
             </router-link>
         </div>
