@@ -21,7 +21,10 @@ const formData = ref({
 });
 
 const form = ref<HTMLElement>();
+const send = ref<HTMLElement>();
 const letter = ref<HTMLElement>();
+const contactWrap = ref<HTMLElement>();
+const successText = ref<HTMLElement>();
 
 const successMessage = ref();
 const errorMessage = ref();
@@ -79,38 +82,28 @@ const sendContact = async () => {
         const response: AxiosResponse = await axios(config);
         successMessage.value = response.data;
 
-        formData.value = {
-            name: '',
-            email: '',
-            message: '',
-            newsletter: false,
-            im: {
-                Telegram: ''
-            },
-            locale: locale.value
-        };
-        isSendContentPass.value = false;
-
-        if (!form.value || !letter.value) return;
-        if (!form.value || !letter.value) return;
+        if (!form.value || !contactWrap.value || !successText.value || !send.value || !letter.value) return;
         gsap.timeline()
             .addLabel('start')
-            .to(form.value, { opacity: 0 }, 'start+=0')
-            .to(letter.value, { y: 250, duration: 0.5 }, 'start+=0')
-            .to(letter.value, {
-                rotation: 20,
-                duration: 0.1,
-                repeat: 5,
-                yoyo: true,
-                ease: 'power1.inOut'
-            })
-            .to(letter.value, {
-                y: 0,
-                duration: 0.4
-            }, 'start+=1.2')
+            .to(send.value, { opacity: 0, duration: 0.2 }, 'start+=0')
+            .to(form.value, { opacity: 0, duration: 0.2 }, 'start+=0')
+            .to(contactWrap.value, { height: 200, duration: 0.5 }, 'start+=0.2')
+            .to(successText.value, { display: 'block', opacity: 1, duration: 0.2 }, 'start+=0.5')
+            .add(() => {
+                if (!letter.value) return;
+                gsap.to(letter.value, {
+                    rotate: 20,
+                    duration: 0.1,
+                    repeat: 3,
+                    yoyo: true,
+                    ease: 'power1.inOut'
+                });
+            }, 'start+=0.5')
+            .to(letter.value, { y: -300, duration: 0.5 }, 'start+=1.2')
+            .to(contactWrap.value, { opacity: 0, duration: 0.2 }, 'start+=1.25')
             .call(() => {
                 contactConfig.value = false;
-            }, [], 'start+=1.8');
+            }, [], 'start+=1.5');
     } catch (error) {
         console.error('Request error:', error);
         errorMessage.value = `Request error: ${error}`;
@@ -119,12 +112,15 @@ const sendContact = async () => {
 </script>
 
 <template>
-    <div class="contact-wrap">
+    <div
+        class="contact-wrap"
+        ref="contactWrap"
+    >
         <img
             class="letter"
-            ref="letter"
             src="@/assets/contact_letter.png"
             alt="letter"
+            ref="letter"
         />
         <img
             class="close"
@@ -132,6 +128,14 @@ const sendContact = async () => {
             alt="close"
             @click="contactConfig = false"
         />
+
+        <div
+            class="success-text"
+            ref="successText"
+        >
+            {{ $t('HEADER.SIDEBAR.CONTACT_FORM.SUCCESS_TEXT') }}
+        </div>
+
         <div
             class="form"
             ref="form"
@@ -147,6 +151,7 @@ const sendContact = async () => {
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.NAME')"
                     @focus="isNamePass=true"
                     @blur="checkName"
+                    @input="checkName"
                 />
             </div>
             <div
@@ -162,6 +167,7 @@ const sendContact = async () => {
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL')"
                     @focus="isEmailPass=true"
                     @blur="checkEmail"
+                    @input="checkEmail"
                 />
             </div>
             <div
@@ -177,6 +183,7 @@ const sendContact = async () => {
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.TELEGRAM')"
                     @focus="isTelegramPass=true"
                     @blur="checkTelegram"
+                    @input="checkTelegram"
                 />
             </div>
             <div
@@ -195,6 +202,7 @@ const sendContact = async () => {
                     v-model="formData.message"
                     @focus="isMessagePass=true"
                     @blur="checkMessage"
+                    @input="checkMessage"
                 />
             </div>
             <div
@@ -209,6 +217,7 @@ const sendContact = async () => {
             class="send-btn"
             @click="sendContact"
             :class="{ 'pass' : isSendContentPass}"
+            ref="send"
         >
             {{ $t('HEADER.SIDEBAR.CONTACT_FORM.SEND') }}
         </button>

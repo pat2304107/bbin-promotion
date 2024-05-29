@@ -22,5 +22,9 @@ import MainContainer from './components/MainContainer.vue';
     background-repeat: no-repeat;
     background-size: 1920px auto;
     background-image: url('@/assets/bg.jpg');
+
+    @media (width >= 1920px) {
+        background-size: 100%;
+    }
 }
 </style>

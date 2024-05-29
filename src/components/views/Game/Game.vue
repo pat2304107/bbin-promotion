@@ -11,15 +11,8 @@ const route = useRoute();
 const currentGameId = computed(() => route.params.game);
 const currentGameConfig = ref(config.gameList.find((game) => game.id === +currentGameId.value));
 
-const videoDom = ref();
 const isDemoShow = ref(false);
 const isGameShareShow = ref(false);
-const isVideoPlaying = ref(false);
-
-const play = () => {
-    videoDom.value[videoDom.value.paused ? 'play' : 'pause']();
-    isVideoPlaying.value = !isVideoPlaying.value;
-};
 </script>
 
 <template>
@@ -67,31 +60,6 @@ const play = () => {
                     class="content"
                     v-html="$t(`GAME.${currentGameId}.CONTENT`)"
                 />
-                <div class="video-container">
-                    <video
-                        ref="videoDom"
-                        :poster="$i18n.locale === 'cn' ? currentGameConfig?.thumbnail_cn : currentGameConfig?.thumbnail_en"
-                    >
-                        <source
-                            :src="$i18n.locale === 'cn' ? currentGameConfig?.video_cn : currentGameConfig?.video_en"
-                            type="video/mp4"
-                        />
-                    </video>
-                    <div
-                        class="mask"
-                        @click="play"
-                    >
-                        <div
-                            class="play-btn"
-                            v-if="!isVideoPlaying"
-                        >
-                            <img
-                                src="@/assets/play_btn.png"
-                                alt="play button"
-                            />
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

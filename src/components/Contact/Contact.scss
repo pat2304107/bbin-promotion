@@ -4,7 +4,7 @@
     left: 50%;
     display: flex;
     align-items: center;
-    padding: 60px 45px 54px;
+    padding: 60px 45px;
     width: calc(100% - 55px);
     color: white ;
     background-color: #000;
@@ -76,9 +76,23 @@
         color: #ec0e14;
         opacity: 0;
 
+        @media (width >= 576px) {
+            font-size: 1rem;
+        }
+
         &.show{
             opacity: 1;
         }
+    }
+
+    .success-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: none;
+        font-size: 24px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
     }
 
     .send-btn{
