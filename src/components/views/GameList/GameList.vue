@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import config from '@/config';
+import { useGtmSender } from '@/composables/useGtmSender';
 
 const iconAnimation = ref<HTMLElement[]>();
 
@@ -23,6 +24,7 @@ onMounted(() => {
                 class="game-item"
                 :class="`click-${game.id}`"
                 :to="`/${$i18n.locale}/${game.id}`"
+                @click="useGtmSender({ event: `展覽_首頁_入口_點擊_${game.id}_${$i18n.locale}` })"
             >
                 <img
                     :src="$i18n.locale === 'cn' ? game.entry_cn : game.entry_en"

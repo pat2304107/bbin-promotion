@@ -5,12 +5,14 @@ import { useI18n } from 'vue-i18n';
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { contactConfig } from '@/config';
+import useGtmSender from '@/composables/useGtmSender';
 import publishConfig from '../../../publish.config';
 
 const { locale } = useI18n();
 
 const formData = ref({
     name: '',
+    phone: '',
     email: '',
     message: '',
     newsletter: false,
@@ -79,6 +81,7 @@ const sendContact = async () => {
     };
 
     try {
+        useGtmSender({ event: `展覽_聯絡我們__點擊_提交_${locale.value}` });
         const response: AxiosResponse = await axios(config);
         successMessage.value = response.data;
 
@@ -157,6 +160,18 @@ const sendContact = async () => {
             <div
                 class="warning"
                 :class="{'show':!isNamePass}"
+            >
+                {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
+            </div>
+            <div class="input-container phone">
+                <input
+                    type="text"
+                    v-model="formData.phone"
+                    :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.PHONE')"
+                />
+            </div>
+            <div
+                class="warning"
             >
                 {{ $t('HEADER.SIDEBAR.CONTACT_FORM.WARNING') }}
             </div>

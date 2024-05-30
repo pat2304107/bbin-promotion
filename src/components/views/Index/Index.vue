@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { gsap } from 'gsap';
 import config from '@/config';
 import enterCh from '@/assets/enter_ch.png';
 import enterEn from '@/assets/enter_en.png';
+import useGtmSender from '@/composables/useGtmSender';
 
+const { locale } = useI18n();
 const gameIcon = ref<HTMLElement[]>();
 const enterBlock = ref<HTMLElement>();
 const iconAnimation = ref<HTMLElement[]>();
 
 const leave = () => {
     if (!gameIcon.value || !iconAnimation.value) return;
+    useGtmSender({ event: `展覽_首頁_入口_點擊_進入_${locale.value}` });
     iconAnimation.value.forEach((icon, index) => {
         setTimeout(() => {
             gsap.to(icon, {

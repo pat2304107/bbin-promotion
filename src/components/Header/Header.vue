@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useLanguage } from '@/composables/setLocalePath';
+import useGtmSender from '@/composables/useGtmSender';
 import Sidebar from './Sidebar/Sidebar.vue';
 import Share from './Share/Share.vue';
 
 const { setLocalePath } = useLanguage();
+const { locale } = useI18n();
 
 const sidebarIsShow = ref(false);
 const shareIsShow = ref(false);
@@ -13,11 +16,13 @@ const languageIsOpen = ref(false);
 const toggleSidebar = () => {
     shareIsShow.value = false;
     sidebarIsShow.value = !sidebarIsShow.value;
+    useGtmSender({ event: `展覽_Header_置頂功能_點擊_選單漢堡_${locale.value}` });
 };
 
 const toggleShare = () => {
     sidebarIsShow.value = false;
     shareIsShow.value = !shareIsShow.value;
+    useGtmSender({ event: `展覽_Header_置頂功能_點擊_SHARE_${locale.value}` });
 };
 
 const toggleLanguage = () => {
@@ -25,6 +30,7 @@ const toggleLanguage = () => {
 };
 const clickLanguageHandler = (lang: 'cn' | 'en') => {
     toggleLanguage();
+    useGtmSender({ event: `展覽_Header_置頂功能_點擊_語系_${lang}` });
     setLocalePath(lang);
 };
 

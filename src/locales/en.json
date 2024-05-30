@@ -11,6 +11,7 @@
             "CONTACT_FORM": {
                 "TITLE": "For cooperation inquiries, please fill out the form below. Our representative will contact you shortly.",
                 "NAME": "Name",
+                "PHONE": "Phone",
                 "EMAIL": "E-mail",
                 "TELEGRAM": "Telegram",
                 "MESSAGE": "Please fill out your cooperation needs.",
@@ -63,7 +64,7 @@
         "5234":{
             "NAME": "Awesome Buffalo",
             "TITLE": "Explore the fantastical legend of the BB Wild West",
-            "CONTENT": "BB Casino presents “Wild West Legends” slot game, merging wilderness charm with Western lore. Enjoy up to <span class='highlight'>46,656 ways to win with its full-screen floating line mechanism. Distinctive gold/silver frame gameplay transforms consecutive eliminations into wild symbols, offering greater surprises. Free games provide chances to earn additional multipliers</span>, making your adventure more exciting. Every spin is a miracle, every line a surprise, with thrilling winning opportunities!!",
+            "CONTENT": "BB Casino presents the <span class='highlight'>floating line</span> slot game, blending wilderness charm with Western lore. Enjoy up to <span class='highlight'>46,656 ways to win with its full-screen floating line mechanism. Distinctive gold/silver frame gameplay transforms consecutive eliminations into wild symbols, offering greater surprises. Free games provide chances to earn additional multipliers</span>, making your adventure more exciting. Every spin is a miracle, every line a surprise, with thrilling winning opportunities!!",
             "PROMOTE1":"The gold and silver frame gameplay enhances the chances of winning lines.",
             "PROMOTE2":"Free game rounds are endlessly stackable, with reward multipliers increasing further.",
             "URL": "https://bit.ly/3wG2Aos"

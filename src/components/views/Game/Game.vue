@@ -1,22 +1,86 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import config from '@/config';
 import gameDemoCn from '@/assets/Game/game_demo_cn.png';
 import gameDemoEn from '@/assets/Game/game_demo_en.png';
+import useGtmSender from '@/composables/useGtmSender';
 import GameShare from './GameShare/GameShare.vue';
 
 const route = useRoute();
+const { locale } = useI18n();
 
 const currentGameId = computed(() => route.params.game);
 const currentGameConfig = ref(config.gameList.find((game) => game.id === +currentGameId.value));
 
 const isDemoShow = ref(false);
 const isGameShareShow = ref(false);
+const gameWrap = ref<HTMLElement>();
+
+const clickDemoHandler = () => {
+    useGtmSender({ event: `展覽_產品頁面_${currentGameId.value}_點擊_試玩按鈕_${locale.value}` });
+    isDemoShow.value = true;
+};
+
+const clickShareHandler = () => {
+    useGtmSender({ event: `展覽_產品頁面_${currentGameId.value}_點擊_分享按鈕_${locale.value}` });
+    isGameShareShow.value = true;
+};
+
+const gtmStatus = {
+    '25%': false,
+    '50%': false,
+    '75%': false,
+    '100%': false
+};
+
+const gtmHandler = ({
+    percent = '25%'
+}: {
+            percent: '25%' | '50%' | '75%' | '100%';
+        }) => {
+    useGtmSender({
+        event: `展覽_產品頁面_${currentGameId.value}_輪軸滾動_${locale.value}`
+    });
+
+    gtmStatus[percent] = true;
+};
+
+const scrollHeightChecker = (target: HTMLElement) => {
+    if (!gameWrap.value) return;
+
+    const basicHeight = target.scrollTop + target.offsetHeight;
+    if (basicHeight >= (gameWrap.value.offsetHeight * 0.25) && !gtmStatus['25%']) {
+        gtmHandler({ percent: '25%' });
+    }
+    if (basicHeight >= (gameWrap.value.offsetHeight * 0.50) && !gtmStatus['50%']) {
+        gtmHandler({ percent: '50%' });
+    }
+    if (basicHeight >= (gameWrap.value.offsetHeight * 0.75) && !gtmStatus['75%']) {
+        gtmHandler({ percent: '75%' });
+    }
+    if (basicHeight >= gameWrap.value.offsetHeight && !gtmStatus['100%']) {
+        gtmHandler({ percent: '100%' });
+    }
+};
+
+onMounted(() => {
+    const target = document.querySelector('.main-container') as HTMLElement;
+    target.scrollTo(0, 0);
+    scrollHeightChecker(target);
+    target?.addEventListener('scroll', () => {
+        scrollHeightChecker(target);
+    });
+});
+
 </script>
 
 <template>
-    <div class="game-wrap">
+    <div
+        class="game-wrap"
+        ref="gameWrap"
+    >
         <div class="banner">
             <img
                 :src="$i18n.locale === 'cn' ? currentGameConfig?.banner : currentGameConfig?.banner_en"
@@ -27,13 +91,13 @@ const isGameShareShow = ref(false);
                     class="demo"
                     :src="$i18n.locale === 'cn' ? gameDemoCn : gameDemoEn"
                     alt="demo button"
-                    @click="isDemoShow = true"
+                    @click="clickDemoHandler"
                 />
                 <img
                     class="share"
                     src="@/assets/Game/game_share.png"
                     alt="share button"
-                    @click="isGameShareShow = true"
+                    @click="clickShareHandler"
                 />
             </div>
         </div>
