@@ -32,7 +32,10 @@ const openContact = () => {
         <div class="sidebar-scaler">
             <div class="sidebar-block sidebar-left">
                 <div class="title">
-                    {{ $t('HEADER.SIDEBAR.GAME_TITLE') }}
+                    <span>▌</span>
+                    <span class="wording">
+                        {{ $t('HEADER.SIDEBAR.GAME_TITLE') }}
+                    </span>
                 </div>
                 <div
                     v-for="game in gameList"
@@ -50,7 +53,10 @@ const openContact = () => {
 
             <div class="sidebar-block sidebar-right">
                 <div class="title">
-                    {{ $t('HEADER.SIDEBAR.BBIN_INFO') }}
+                    <span>▌</span>
+                    <span class="wording">
+                        {{ $t('HEADER.SIDEBAR.BBIN_INFO') }}
+                    </span>
                 </div>
 
                 <div class="bbin-link">

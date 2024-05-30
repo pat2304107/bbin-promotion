@@ -58,9 +58,14 @@
 
             .title-text{
                 margin-left: 12.5px;
-                font-size: 32px;
+                padding: 5px 10px;
+                width: fit-content;
+                font-size: 18px;
                 font-weight: 900;
-                color: #ec0e14;
+                color: #000;
+                background-color: #ec0e14;
+                border: 1px solid #ec0e14;
+                border-radius: 8px;
             }
         }
 
@@ -141,9 +146,14 @@
 
             .title-text{
                 margin-left: 12.5px;
-                font-size: 32px;
+                padding: 5px 10px;
+                width: fit-content;
+                font-size: 18px;
                 font-weight: 900;
-                color: #ec0e14;
+                color: #000;
+                background-color: #ec0e14;
+                border: 1px solid #ec0e14;
+                border-radius: 8px;
             }
         }
 
