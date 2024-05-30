@@ -15,6 +15,7 @@ const formData = ref({
     phone: '',
     email: '',
     message: '',
+    memo: '2024-06-展覽',
     newsletter: false,
     im: {
         Telegram: ''

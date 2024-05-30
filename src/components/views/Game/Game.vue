@@ -38,10 +38,10 @@ const gtmStatus = {
 const gtmHandler = ({
     percent = '25%'
 }: {
-            percent: '25%' | '50%' | '75%' | '100%';
-        }) => {
+    percent: '25%' | '50%' | '75%' | '100%';
+}) => {
     useGtmSender({
-        event: `展覽_產品頁面_${currentGameId.value}_輪軸滾動_${locale.value}`
+        event: `展覽_產品頁面_${currentGameId.value}_輪軸滾動${percent}_${locale.value}`
     });
 
     gtmStatus[percent] = true;
@@ -143,17 +143,21 @@ onMounted(() => {
                 <div class="promote promote-1">
                     {{ $t(`GAME.${currentGameId}.PROMOTE1`) }}
                 </div>
-                <img
-                    :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_1 : currentGameConfig?.gif_en_1"
-                    alt="promote gif 1"
-                />
+                <div class="promote-image-skeleton">
+                    <img
+                        :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_1 : currentGameConfig?.gif_en_1"
+                        alt="promote gif 1"
+                    />
+                </div>
                 <div class="promote promote-2">
                     {{ $t(`GAME.${currentGameId}.PROMOTE2`) }}
                 </div>
-                <img
-                    :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_2 : currentGameConfig?.gif_en_2"
-                    alt="promote gif 2"
-                />
+                <div class="promote-image-skeleton">
+                    <img
+                        :src="$i18n.locale === 'cn' ? currentGameConfig?.gif_cn_2 : currentGameConfig?.gif_en_2"
+                        alt="promote gif 2"
+                    />
+                </div>
             </div>
         </div>
 

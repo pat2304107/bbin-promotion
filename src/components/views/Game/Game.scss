@@ -14,6 +14,7 @@
     .banner{
         position: relative;
         width: 100%;
+        aspect-ratio: 335 / 181;
 
         img{
             width: 100%;
@@ -27,6 +28,7 @@
             justify-content: flex-end;
             width: 100%;
             transform: translateY(20%);
+            z-index: 3;
 
             .demo{
                 margin-right: 3%;
@@ -178,6 +180,11 @@
                 margin-top: 18px;
                 width: 100%;
                 border-radius: 18px;
+            }
+
+            .promote-image-skeleton{
+                width: 100%;
+                aspect-ratio: 285 / 161;
             }
         }
     }
