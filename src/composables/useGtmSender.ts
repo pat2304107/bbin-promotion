@@ -116,7 +116,6 @@ const useGtmSender = ({
                 ) delete apiInfo[apiInfoKeys[i] as ApiInfoKey];
         }
 
-        console.log(apiInfo);
         dataLayer.push(apiInfo);
 
         step += 1;
