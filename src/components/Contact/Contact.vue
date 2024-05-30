@@ -15,7 +15,6 @@ const formData = ref({
     phone: '',
     email: '',
     message: '',
-    memo: '2024-06-展覽',
     newsletter: false,
     im: {
         Telegram: ''
@@ -56,7 +55,7 @@ const validateField = (field: string) => {
             isNamePass.value = !!formData.value.name;
             break;
         case 'email':
-            isEmailPass.value = !formData.value.email || emailPattern.test(formData.value.email);
+            isEmailValid.value = !formData.value.email || emailPattern.test(formData.value.email);
             isEmailPass.value = !!formData.value.email;
             break;
         case 'message':
@@ -80,7 +79,17 @@ const sendContact = async () => {
         url: publishConfig.branch === 'main'
             ? `${window.location.origin}/api/contact-us`
             : `${publishConfig.domain}/api/contact-us`,
-        data: formData.value
+        data: {
+            name: formData.value.name,
+            phone: formData.value.phone,
+            email: formData.value.email,
+            message: `2024-06-展覽 ${formData.value.message}`,
+            newsletter: false,
+            im: {
+                Telegram: formData.value.im.Telegram
+            },
+            locale: locale.value
+        }
     };
 
     try {
