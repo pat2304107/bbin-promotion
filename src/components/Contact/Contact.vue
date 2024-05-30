@@ -40,29 +40,33 @@ const isTelegramPass = ref(true);
 const isSendContentPass = ref(false);
 
 const checkSendContent = () => {
-    if (formData.value.name && formData.value.email && emailPattern.test(formData.value.email) && formData.value.message && formData.value.im.Telegram) {
-        isSendContentPass.value = true;
-    } else {
-        isSendContentPass.value = false;
+    isSendContentPass.value = !!(
+        formData.value.name
+        && formData.value.email
+        && emailPattern.test(formData.value.email)
+        && formData.value.message
+        && formData.value.im.Telegram
+    );
+};
+
+const validateField = (field: string) => {
+    switch (field) {
+        case 'name':
+            isNamePass.value = !!formData.value.name;
+            break;
+        case 'email':
+            isEmailPass.value = !formData.value.email || emailPattern.test(formData.value.email);
+            isEmailPass.value = !!formData.value.email;
+            break;
+        case 'message':
+            isMessagePass.value = !!formData.value.message;
+            break;
+        case 'Telegram':
+            isTelegramPass.value = !!formData.value.im.Telegram;
+            break;
+
+        default: return;
     }
-};
-
-const checkName = () => {
-    isNamePass.value = !!formData.value.name;
-    checkSendContent();
-};
-const checkEmail = () => {
-    isEmailValid.value = !formData.value.email || emailPattern.test(formData.value.email);
-    isEmailPass.value = !!formData.value.email;
-
-    checkSendContent();
-};
-const checkMessage = () => {
-    isMessagePass.value = !!formData.value.message;
-    checkSendContent();
-};
-const checkTelegram = () => {
-    isTelegramPass.value = !!formData.value.im.Telegram;
     checkSendContent();
 };
 
@@ -72,11 +76,9 @@ const sendContact = async () => {
     }
     const config: AxiosRequestConfig = {
         method: 'post',
-        url: `${
-            publishConfig.branch === 'main'
-                ? window.location.origin
-                : publishConfig.domain
-        }/api/contact-us`,
+        url: publishConfig.branch === 'main'
+            ? `${window.location.origin}/api/contact-us`
+            : `${publishConfig.domain}/api/contact-us`,
         data: formData.value
     };
 
@@ -93,14 +95,15 @@ const sendContact = async () => {
             .to(contactWrap.value, { height: 200, duration: 0.5 }, 'start+=0.2')
             .to(successText.value, { display: 'block', opacity: 1, duration: 0.2 }, 'start+=0.5')
             .add(() => {
-                if (!letter.value) return;
-                gsap.to(letter.value, {
-                    rotate: 20,
-                    duration: 0.1,
-                    repeat: 3,
-                    yoyo: true,
-                    ease: 'power1.inOut'
-                });
+                if (letter.value) {
+                    gsap.to(letter.value, {
+                        rotate: 20,
+                        duration: 0.1,
+                        repeat: 3,
+                        yoyo: true,
+                        ease: 'power1.inOut'
+                    });
+                }
             }, 'start+=0.5')
             .to(letter.value, { y: -300, duration: 0.5 }, 'start+=1.2')
             .to(contactWrap.value, { opacity: 0, duration: 0.2 }, 'start+=1.25')
@@ -153,8 +156,8 @@ const sendContact = async () => {
                     v-model="formData.name"
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.NAME')"
                     @focus="isNamePass=true"
-                    @blur="checkName"
-                    @input="checkName"
+                    @blur="validateField('name')"
+                    @input="validateField('name')"
                 />
             </div>
             <div
@@ -181,8 +184,8 @@ const sendContact = async () => {
                     v-model="formData.email"
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.EMAIL')"
                     @focus="isEmailPass=true"
-                    @blur="checkEmail"
-                    @input="checkEmail"
+                    @blur="validateField('email')"
+                    @input="validateField('email')"
                 />
             </div>
             <div
@@ -197,8 +200,8 @@ const sendContact = async () => {
                     v-model="formData.im.Telegram"
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.TELEGRAM')"
                     @focus="isTelegramPass=true"
-                    @blur="checkTelegram"
-                    @input="checkTelegram"
+                    @blur="validateField('Telegram')"
+                    @input="validateField('Telegram')"
                 />
             </div>
             <div
@@ -216,8 +219,8 @@ const sendContact = async () => {
                     :placeholder="$t('HEADER.SIDEBAR.CONTACT_FORM.MESSAGE')"
                     v-model="formData.message"
                     @focus="isMessagePass=true"
-                    @blur="checkMessage"
-                    @input="checkMessage"
+                    @blur="validateField('message')"
+                    @input="validateField('message')"
                 />
             </div>
             <div

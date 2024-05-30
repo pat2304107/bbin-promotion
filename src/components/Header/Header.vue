@@ -13,23 +13,22 @@ const sidebarIsShow = ref(false);
 const shareIsShow = ref(false);
 const languageIsOpen = ref(false);
 
-const toggleSidebar = () => {
-    shareIsShow.value = false;
-    sidebarIsShow.value = !sidebarIsShow.value;
-    useGtmSender({ event: `展覽_Header_置頂功能_點擊_選單漢堡_${locale.value}` });
+const toggleState = (state: 'sidebar' | 'share' | 'language') => {
+    if (state === 'sidebar') {
+        shareIsShow.value = false;
+        sidebarIsShow.value = !sidebarIsShow.value;
+        useGtmSender({ event: `展覽_Header_置頂功能_點擊_選單漢堡_${locale.value}` });
+    } else if (state === 'share') {
+        sidebarIsShow.value = false;
+        shareIsShow.value = !shareIsShow.value;
+        useGtmSender({ event: `展覽_Header_置頂功能_點擊_SHARE_${locale.value}` });
+    } else if (state === 'language') {
+        languageIsOpen.value = !languageIsOpen.value;
+    }
 };
 
-const toggleShare = () => {
-    sidebarIsShow.value = false;
-    shareIsShow.value = !shareIsShow.value;
-    useGtmSender({ event: `展覽_Header_置頂功能_點擊_SHARE_${locale.value}` });
-};
-
-const toggleLanguage = () => {
-    languageIsOpen.value = !languageIsOpen.value;
-};
 const clickLanguageHandler = (lang: 'cn' | 'en') => {
-    toggleLanguage();
+    toggleState('language');
     useGtmSender({ event: `展覽_Header_置頂功能_點擊_語系_${lang}` });
     setLocalePath(lang);
 };
@@ -66,7 +65,7 @@ const clickLogoHandler = () => {
 
                 <div
                     v-if="!languageIsOpen"
-                    @click="toggleLanguage"
+                    @click="toggleState('language')"
                     class="lang-title"
                 >
                     {{ $t('HEADER.LANGUAGE_SELECTOR') }}
@@ -98,7 +97,7 @@ const clickLogoHandler = () => {
 
             <div
                 class="share"
-                @click="toggleShare"
+                @click="toggleState('share')"
             >
                 <img
                     src="@/assets/share_icon.png"
@@ -112,8 +111,8 @@ const clickLogoHandler = () => {
 
             <div
                 class="hamburger-menu"
-                @click="toggleSidebar"
-                :class="{'active':sidebarIsShow}"
+                @click="toggleState('sidebar')"
+                :class="{'active': sidebarIsShow}"
             >
                 <div class="ham ham-1" />
                 <div class="ham ham-2" />
