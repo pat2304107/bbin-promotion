@@ -19,7 +19,6 @@ import MainContainer from './components/MainContainer.vue';
     overflow: hidden;
     min-height: 100%;
     background-position: center top;
-    background-repeat: no-repeat;
     background-size: 1920px auto;
     background-image: url('@/assets/bg.jpg');
 
