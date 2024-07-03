@@ -2,7 +2,7 @@
 ## 開發環境
 
 [![image](https://img.shields.io/badge/nvm-v0.38.0-success)](https://titangene.github.io/article/nvm.html)
-[![image](https://img.shields.io/badge/node.js-v18.16.0^-success)](https://nodejs.org/dist/v18.16.0/)
+[![image](https://img.shields.io/badge/node.js-v20.13.1^-success)](https://nodejs.org/dist/v20.13.1/)
 
 ## IDE 設定
 
